@@ -274,7 +274,7 @@ div[class^=jumpToPresentBar] {
 [class*=guilds_] {
     transition: width 0.15s ease, padding 0.15s ease;
   &:not(:hover) {
-    padding-left: 3px;
+    padding-left: 5px;
     width: 0px;
     transition: width 0.15s ease, padding 0.15s ease;
   }

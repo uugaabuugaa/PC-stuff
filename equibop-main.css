@@ -99,11 +99,7 @@
       }
    }
 }
-/* unhide album title */
-#vc-spotify-titles .vc-spotify-ellipoverflow:has(> #vc-spotify-album-title) {
-    display: block !important;
-    font-size: 12px !important;   
-}
+
 
 #vc-spotify-player {
     & .vc-spotify-button-row {
@@ -130,8 +126,17 @@
         }
     }
 }
- 
-
+/*unhide and remove on from album name*/ 
+#vc-spotify-titles .vc-spotify-ellipoverflow:has(> #vc-spotify-album-title) {
+                display:block !important;
+                font-size: 0px !important;
+                 > #vc-spotify-album-title,
+                .vc-spotify-comma {
+                    font-size: 12px !important;
+                    color: white;
+                    filter: brightness(0.75);
+                }
+            }
 
 
 /* Nitro Theme Shit */

@@ -110,6 +110,7 @@
         & .vc-spotify-button {
             &:has(.vc-spotify-pause, .vc-spotify-play) {
                 background: rgba(182, 163, 212, 0.75);
+                border-radius: 100%;
                 svg {
                     fill: white;
                     filter: none;
@@ -118,7 +119,18 @@
         }
     }
 }
-
+/*uniform spcacing + 1 liners*/
+#vc-spotify-player {
+    & #vc-spotify-info-wrapper {
+        & #vc-spotify-titles {
+            > .vc-spotify-ellipoverflow {
+                white-space: wrap;
+                max-height: 1.15rem;
+            }
+        }
+    }
+}
+ 
 
 
 
@@ -274,7 +286,7 @@ div[class^=jumpToPresentBar] {
 [class*=guilds_] {
     transition: width 0.15s ease, padding 0.15s ease;
   &:not(:hover) {
-    padding-left: 3px;
+    padding-left: 5px;
     width: 0px;
     transition: width 0.15s ease, padding 0.15s ease;
   }

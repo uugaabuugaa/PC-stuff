@@ -73,7 +73,7 @@
     --android-darken-percent: 0.9 !important; /* adjust dark fading */
     --your-font-here: roboto !important; /* choose a font, Roboto is default android font */
     font-size: 10px;
-    height: 110px;
+    height: 100px;
 }
 #vc-spotify-progress-bar [class^=slider_] [class^=bar_] [class^=barFill_] {
     background-color: rgb(182, 163, 212) !important;
@@ -119,7 +119,18 @@
         }
     }
 }
-
+/*uniform spcacing + 1 liners*/
+#vc-spotify-player {
+    & #vc-spotify-info-wrapper {
+        & #vc-spotify-titles {
+            > .vc-spotify-ellipoverflow {
+                white-space: wrap;
+                max-height: 1.15rem;
+            }
+        }
+    }
+}
+ 
 
 
 

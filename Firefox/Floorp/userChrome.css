@@ -1,0 +1,148 @@
+/*
+====================================================
+Completely hide tabs strip, used together with Sidebery add-on
+====================================================
+*/
+
+ #TabsToolbar {
+ display: none;
+} 
+
+
+/*
+====================================================
+Sidebery add-on autohide
+from https://www.reddit.com/r/FirefoxCSS/comments/yx99mj/autohide_sidebar_css_stopped_working_after/iwodcgm/
+====================================================
+*/
+
+#sidebar-box {
+--bar-width: 31px;
+ position: relative !important;
+ overflow-x: hidden !important;
+ /* margin-right: calc(10px * -1) !important; */
+ /* left: var(--bar-width) !important; */
+ min-width: var(--bar-width) !important;
+ max-width: var(--bar-width) !important;
+ border-right: 1px solid var(--sidebar-border-color);
+ z-index: 1;
+ transition: all 0.1s;
+ 
+}
+
+#sidebar-box:hover {
+ --expanded-width: 300px;
+ /* Replace margin-right below with margin-left if Sidebery is on the right side */
+ margin-right: calc(
+  calc(var(--expanded-width) - var(--bar-width)) * -1
+ ) !important;
+ /* left: var(--expanded-width) !important; */
+ min-width: var(--expanded-width) !important;
+ max-width: var(--expanded-width) !important;
+}
+
+#sidebar-box:hover #sidebar-header {
+ min-width: var(--expanded-width) !important;
+ max-width: var(--expanded-width) !important;
+}
+
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+ min-width: var(--bar-width) !important;
+ max-width: var(--bar-width) !important;
+ overflow: hidden !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+ display: none;
+}
+
+/* Hide the Sidebar Header only for Sidebery
+_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action is the extension id for sidebery.
+from https://www.reddit.com/r/FirefoxCSS/comments/15swsq4/how_to_hide_this_dropdown_arrow_icon_in_sidebery/jxqce8r/
+*/
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
+ display: none !important;
+}
+
+/* HIDE BMS */
+
+#sidebar-select-box {
+width: 1px !important;
+max-width: 1px !important;
+min-width: 1px !important;
+transition: all 0.1s;
+}
+#sidebar-select-box:hover {
+width: 42px !important;
+max-width: 42px !important;
+min-width: 42px !important;
+}
+
+/* EXTENSION */
+
+/* Make extensions looks minimal */
+
+#unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-text::before {
+    content: "• • •";
+    font-size: 15px;
+    visibility: visible !important;
+    display: block;
+    text-align: center;
+}
+
+#unified-extensions-panel #unified-extensions-view {
+    width: 100% !important;
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 22px;
+    --firefoxcss-number-of-extensions-in-a-row: 4;
+}
+
+
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    display:none !important;
+}
+
+#unified-extensions-view .panel-subview-body {
+    padding: 10px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:left !important;
+    align-items:left !important;
+}
+
+/* HIDE BMS */
+
+#sidebar-select-box {
+width: 9px !important;
+max-width: 9px !important;
+min-width: 9px !important;
+transition: all 0.1s;
+}
+#sidebar-select-box:hover {
+width: 42px !important;
+max-width: 42px !important;
+min-width: 42px !important;
+}
+
+/*scrollbar*/
+#sidebar-select-box {
+margin-right: -8px !important;
+}
+
+}

@@ -1,0 +1,15 @@
+/*** hover effects ***/
+#root:not(:hover) {
+    --tabs-indent: 0px;
+}
+/* ident indicator ********************************************/
+/* Settings > Tabs > Show marks to indicate tabs sub-tree levels > on */
+.Tab .title {
+    transition: margin-left 300ms ease;
+}
+.Tab:hover {
+    --tabs-inner-gap: 8px;
+}
+.Tab:hover .title {
+    margin-left: 5px;
+}

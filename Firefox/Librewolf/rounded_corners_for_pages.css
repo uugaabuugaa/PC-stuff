@@ -8,9 +8,10 @@
 /* inner rounded corners */
 #tabbrowser-tabbox::after {
   content: "";
-  inset: -4px;
+  inset: -10px;
   position: absolute;
-  border: 10px solid var(--toolbar-bgcolor);
+  border: 15px solid var(--toolbar-bgcolor);
+  border-top: 12px solid var(--toolbar-bgcolor);
   border-radius: 24px;
   z-index:1;
  pointer-events:none;

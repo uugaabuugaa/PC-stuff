@@ -17,7 +17,7 @@ from https://www.reddit.com/r/FirefoxCSS/comments/yx99mj/autohide_sidebar_css_st
 */
 
 #sidebar-box {
---bar-width: 31px;
+--bar-width: 30px;
  position: relative !important;
  overflow-x: hidden !important;
  /* margin-right: calc(10px * -1) !important; */

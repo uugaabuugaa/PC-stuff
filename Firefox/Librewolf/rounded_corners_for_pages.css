@@ -1,0 +1,17 @@
+/*****Rounded Corners in Pages****/
+
+#tabbrowser-tabbox {
+  position: relative;
+  overflow: hidden;
+}
+
+/* inner rounded corners */
+#tabbrowser-tabbox::after {
+  content: "";
+  inset: -4px;
+  position: absolute;
+  border: 10px solid var(--toolbar-bgcolor);
+  border-radius: 24px;
+  z-index:1;
+ pointer-events:none;
+}

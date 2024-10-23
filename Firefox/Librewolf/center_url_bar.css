@@ -1,0 +1,15 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_centered_text.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important; }
+
+/* outer border */
+#tabbrowser-tabbox::before {
+  content: "";
+  inset: -2px;
+  position: absolute;
+  border: 4px solid var(--toolbar-bgcolor);
+  z-index:1;
+  pointer-events:none;
+}

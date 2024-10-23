@@ -1,0 +1,292 @@
+
+/*************************************************************************************************************************************************************************************************************************************************************
+
+"userChrome.css" is a custom CSS file that can be used to specify CSS style rules for Floorp's interface (NOT internal site) using "chrome" privileges.
+For instance, if you want to hide the tab bar, you can use the following CSS rule:
+
+**************************************
+#TabsToolbar {                       *
+    display: none !important;        *
+}                                    *
+**************************************
+
+NOTE: You can use the userChrome.css file without change preferences (about:config)
+
+Quote: https://userChrome.org | https://github.com/topics/userchrome 
+
+************************************************************************************************************************************************************************************************************************************************************/
+
+@charset "UTF-8";
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+/* Please write your custom CSS under this line*/
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/*
+====================================================
+Completely hide tabs strip, used together with Sidebery add-on
+====================================================
+*/
+@media (-moz-platform: windows), (-moz-platform: windows-win10) {
+  :root[tabsintitlebar] {
+    --uc-window-control-width: 137px;
+  }
+  #back-button {
+    margin-top: -0.5px !important;
+  }
+  #forward-button {
+    margin-top: -0.5px !important;
+  }
+  #reload-button {
+    margin-top: -0.5px !important;
+  }
+  #PanelUI-button {
+    margin-top: -0.5px !important;
+  }
+  #nav-bar-overflow-button {
+    margin-top: -0.5px !important;
+  }
+  :root {
+    --uc-toolbar-height: 35px;
+    --chrome-content-separator-color: none !important;
+  }
+  :root:not([uidensity="compact"]) {
+    --uc-toolbar-height: 38px;
+  }
+  #TabsToolbar {
+    visibility: collapse !important;
+  }
+  #TabsToolbar .titlebar-buttonbox-container {
+    visibility: hidden !important;
+  }
+  :root:not([sizemode="maximized"]) .titlebar-buttonbox-container {
+    margin-top: 0px;
+  }
+  :root:not([inFullscreen]) #nav-bar {
+    margin-top: calc(0px - var(--uc-toolbar-height));
+    z-index: 2;
+  }
+  #toolbar-menubar {
+    min-height: unset !important;
+    height: var(--uc-toolbar-height) !important;
+    position: relative;
+  }
+  .titlebar-buttonbox {
+    z-index: 3 !important;
+  }
+   
+  /*remove this if want control window normal width*/
+  .titlebar-buttonbox * {
+    width: 35px;
+    height: 38px;
+  }
+ 
+  #nav-bar {
+    border-top: none !important;
+  }
+  #main-menubar {
+    -moz-box-flex: 1;
+    background-color: var(--toolbar-bgcolor, --toolbar-non-lwt-bgcolor);
+    background-clip: padding-box;
+    border-right: 30px solid transparent;
+    border-image: linear-gradient(
+        to left,
+        transparent,
+        var(--toolbar-bgcolor, --toolbar-non-lwt-bgcolor) 30px
+      )
+      20/30px;
+  }
+  #toolbar-menubar:not([inactive]) {
+    z-index: 2;
+  }
+  #toolbar-menubar[inactive] > #menubar-items {
+    opacity: 0;
+    pointer-events: none;
+    margin-left: var(--uc-window-drag-space-width, 0);
+  }
+  :root[inFullscreen] #nav-bar {
+    border-right: none !important;
+  }
+}
+
+#nav-bar {
+  border-right: none !important;
+  margin-right: 107px !important;
+}
+
+/*
+====================================================
+Sidebery add-on autohide
+from https://www.reddit.com/r/FirefoxCSS/comments/yx99mj/autohide_sidebar_css_stopped_working_after/iwodcgm/
+====================================================
+*/
+
+#sidebar-box {
+--bar-width: 30px;
+ position: relative !important;
+ overflow-x: hidden !important;
+ /* margin-right: calc(10px * -1) !important; */
+ /* left: var(--bar-width) !important; */
+ min-width: var(--bar-width) !important;
+ max-width: var(--bar-width) !important;
+ border-right: 1px solid var(--sidebar-border-color);
+ z-index: 1;
+ transition: all 0.1s;
+ 
+}
+
+#sidebar-box:hover {
+ --expanded-width: 300px;
+ /* Replace margin-right below with margin-left if Sidebery is on the right side */
+ margin-right: calc(
+  calc(var(--expanded-width) - var(--bar-width)) * -1
+ ) !important;
+ /* left: var(--expanded-width) !important; */
+ min-width: var(--expanded-width) !important;
+ max-width: var(--expanded-width) !important;
+}
+
+#sidebar-box:hover #sidebar-header {
+ min-width: var(--expanded-width) !important;
+ max-width: var(--expanded-width) !important;
+}
+
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+ min-width: var(--bar-width) !important;
+ max-width: var(--bar-width) !important;
+ overflow: hidden !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+ display: none;
+}
+
+/* Hide the Sidebar Header only for Sidebery
+_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action is the extension id for sidebery.
+from https://www.reddit.com/r/FirefoxCSS/comments/15swsq4/how_to_hide_this_dropdown_arrow_icon_in_sidebery/jxqce8r/
+*/
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
+ display: none !important;
+}
+
+/* HIDE BMS */
+
+#sidebar-select-box {
+width: 1px !important;
+max-width: 1px !important;
+min-width: 1px !important;
+transition: all 0.1s;
+}
+#sidebar-select-box:hover {
+width: 42px !important;
+max-width: 42px !important;
+min-width: 42px !important;
+}
+
+/* EXTENSION */
+
+/* Make extensions looks minimal */
+
+#unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-text::before {
+    content: "• • •";
+    font-size: 15px;
+    visibility: visible !important;
+    display: block;
+    text-align: center;
+}
+
+#unified-extensions-panel #unified-extensions-view {
+    width: 100% !important;
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 22px;
+    --firefoxcss-number-of-extensions-in-a-row: 4;
+}
+
+
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    display:none !important;
+}
+
+#unified-extensions-view .panel-subview-body {
+    padding: 10px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:left !important;
+    align-items:left !important;
+}
+
+/* HIDE BMS */
+
+#sidebar-select-box {
+width: 9px !important;
+max-width: 9px !important;
+min-width: 9px !important;
+transition: all 0.1s;
+}
+#sidebar-select-box:hover {
+width: 42px !important;
+max-width: 42px !important;
+min-width: 42px !important;
+}
+
+/*scrollbar*/
+#sidebar-select-box {
+margin-right: -8px !important;
+}
+
+}
+
+/*****Rounded Corners in Pages****/
+
+#tabbrowser-tabbox {
+  position: relative;
+  overflow: hidden;
+}
+
+/* inner rounded corners */
+#tabbrowser-tabbox::after {
+  content: "";
+  inset: -4px;
+  position: absolute;
+  border: 10px solid var(--toolbar-bgcolor);
+  border-radius: 24px;
+  z-index:1;
+ pointer-events:none;
+}
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_centered_text.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important; }
+
+/* outer border */
+#tabbrowser-tabbox::before {
+  content: "";
+  inset: -2px;
+  position: absolute;
+  border: 4px solid var(--toolbar-bgcolor);
+  z-index:1;
+  pointer-events:none;
+}
+
+/**center bookmark bar**/
+#PlacesToolbarItems {
+  display: flex !important;
+  justify-content: center !important;
+}

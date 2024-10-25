@@ -118,6 +118,7 @@
 /*unhide and remove on from album name*/ 
 #vc-spotify-titles .vc-spotify-ellipoverflow {
     max-height: 1.15rem !important;
+    padding-left: 10px;
     &:has(> #vc-spotify-album-title) {
         display: block !important;
         font-size: 0px !important;

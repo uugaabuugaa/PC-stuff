@@ -1,0 +1,10 @@
+:root {
+    --spice-button: #a994e7 !important;
+    --spice-button-active: #8f50ed !important;
+    --spice-text: #ddc6ff !important;
+    --spice-subtext: #a69cc6 !important;
+    --spice-nav-active: #ddc6ff !important;
+}
+.main-home-filterChipsSection {
+    background-color: var(--background-base)  !important;
+    }

@@ -1,0 +1,4 @@
+/* Zoom */
+html {
+  zoom: 90%!important;
+}

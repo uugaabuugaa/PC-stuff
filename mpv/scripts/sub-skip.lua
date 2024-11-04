@@ -3,8 +3,8 @@
 local cfg = {
 	default_state = true,
 	seek_mode_default = false,
-	min_skip_interval = 3,
-	speed_skip_speed = 5,
+	min_skip_interval = 5,
+	speed_skip_speed = 3,
 	lead_in = 0,
 	lead_out = 1,
 	speed_skip_speed_delta = 0.1,

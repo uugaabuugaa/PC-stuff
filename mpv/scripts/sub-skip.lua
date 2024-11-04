@@ -1,10 +1,9 @@
-
 -- feel free to modify and/or redistribute as long as you give credit to the original creator; © 2022 Ben Kerman
 
 local cfg = {
 	default_state = true,
 	seek_mode_default = false,
-	min_skip_interval = 5,
+	min_skip_interval = 3,
 	speed_skip_speed = 3,
 	lead_in = 0,
 	lead_out = 1,
@@ -152,6 +151,10 @@ function end_skip()
 end
 
 function handle_sub_change(_, sub_end)
+	--if no subtitle track loaded then we don't need to start skipping
+	if mp.get_property_number('sid', -1) == -1 then
+		return
+	end
 	if not sub_end and not skipping then
 		local time_pos = mp.get_property_number("time-pos")
 		local next_delay = calc_next_delay()
@@ -182,9 +185,7 @@ function deactivate()
 	active = false
 end
 
-
 if active then activate() end
-
 
 -- CONFIG --
 
@@ -198,14 +199,14 @@ function toggle_script()
 	end
 end
 
-mp.add_key_binding(nil, "toggle_script", toggle_script)
+mp.add_key_binding("Ctrl+n", "toggle", toggle_script)
 
 function switch_mode()
 	seek_skip = not seek_skip
 	mp.osd_message("Seek skip " .. (seek_skip and "enabled" or "disabled"))
 end
 
-mp.add_key_binding(nil, "switch-mode", switch_mode)
+mp.add_key_binding("Ctrl+Alt+n", "switch-mode", switch_mode)
 
 function set_speed_skip_speed(new_value)
 	cfg.speed_skip_speed = new_value
@@ -213,11 +214,11 @@ function set_speed_skip_speed(new_value)
 	mp.osd_message("Skip speed: " .. new_value)
 end
 
-mp.add_key_binding(nil, "decrease-speed", function()
+mp.add_key_binding("Ctrl+Alt+[", "decrease-speed", function()
 	set_speed_skip_speed(cfg.speed_skip_speed - cfg.speed_skip_speed_delta)
 end, {repeatable = true})
 
-mp.add_key_binding(nil, "increase-speed", function()
+mp.add_key_binding("Ctrl+Alt+]", "increase-speed", function()
 	set_speed_skip_speed(cfg.speed_skip_speed + cfg.speed_skip_speed_delta)
 end, {repeatable = true})
 
@@ -226,11 +227,10 @@ function set_min_interval(new_value)
 	mp.osd_message("Minimum interval: " .. new_value)
 end
 
-mp.add_key_binding(nil, "decrease-interval", function()
+mp.add_key_binding("Ctrl+Alt+-", "decrease-interval", function()
 	set_min_interval(cfg.min_skip_interval - cfg.min_skip_interval_delta)
 end, {repeatable = true})
 
-mp.add_key_binding(nil, "increase-interval", function()
+mp.add_key_binding("Ctrl+Alt++", "increase-interval", function()
 	set_min_interval(cfg.min_skip_interval + cfg.min_skip_interval_delta)
 end, {repeatable = true})
-

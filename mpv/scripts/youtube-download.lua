@@ -16,12 +16,12 @@ local msg = require 'mp.msg'
 local opts = {
     -- Key bindings
     -- Set to empty string "" to disable
-    download_video_binding = "ctrl+1",
-    download_audio_binding = "ctrl+2",
-    download_subtitle_binding = "ctrl+3",
-    download_video_embed_subtitle_binding = "ctrl+4",
-    select_range_binding = "ctrl+5",
-    download_mpv_playlist = "ctrl+6",
+    download_video_binding = "ctrl+shift+1",
+    download_audio_binding = "ctrl+shift+2",
+    download_subtitle_binding = "ctrl+shift+3",
+    download_video_embed_subtitle_binding = "ctrl+shift+4",
+    select_range_binding = "ctrl+shift+5",
+    download_mpv_playlist = "ctrl+shift+6",
 
     -- Specify audio format: "best", "aac","flac", "mp3", "m4a", "opus", "vorbis", or "wav"
     audio_format = "best",
@@ -31,10 +31,10 @@ local opts = {
     audio_quality = "0",
 
     -- Embed the thumbnail on audio files
-    embed_thumbnail = false,
+    embed_thumbnail = true,
 
     -- Add metadata to audio files
-    audio_add_metadata = false,
+    audio_add_metadata = true,
 
     -- Add metadata to video files
     video_add_metadata = false,

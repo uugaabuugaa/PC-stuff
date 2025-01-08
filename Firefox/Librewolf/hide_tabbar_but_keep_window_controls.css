@@ -1,4 +1,4 @@
-*/
+/* window controls*/
 @media (-moz-platform: windows), (-moz-platform: windows-win10) {
   :root[tabsintitlebar] {
     --uc-window-control-width: 137px;
@@ -83,5 +83,5 @@
 
 #nav-bar {
   border-right: none !important;
-  margin-right: 105px !important;
+  margin-right: 135px !important;
 }

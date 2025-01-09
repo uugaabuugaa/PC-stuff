@@ -1,0 +1,12 @@
+/** Import Lepton stylesheet (Content) ****************************************/
+@import url("css/leptonContent.css");
+
+/** Add your custom styles below **********************************************/
+@charset "UTF-8";
+/* Please write your custom CSS under this line*/
+@-moz-document url-prefix("http://"), url-prefix("https://") {
+a:link { color: #acd1d4 !important; }
+a:visited { color: #d3bad6 !important; }
+a:hover { color: #008FFC !important; }
+a:active { color: #7F14FF !important; }
+}

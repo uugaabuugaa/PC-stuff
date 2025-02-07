@@ -420,4 +420,6 @@ div[class^=jumpToPresentBar] {
     position: relative;
     background: var(--background-message-highlight);
 }
-
+.mentioned__5126c:before {
+  background: var(--brand-500);
+}

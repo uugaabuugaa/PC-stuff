@@ -416,7 +416,7 @@ div[class^=jumpToPresentBar] {
 
 
 /*make reply and mentioned highlight line same*/
-.mentioned_5126c {
+.mentioned__5126c {
     position: relative;
     background: var(--background-message-highlight);
 }

@@ -89,6 +89,9 @@
 #vc-spotify-player + [class^="container"] {
     background: transparent;
 } 
+.theme-dark .content__37e49 {
+    background: transparent;
+}
 
 /* make shuffle and repeat buttons always white */
 #vc-spotify-player .vc-spotify-button:is([class*=repeat], [class*=shuffle]) {

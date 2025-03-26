@@ -426,3 +426,18 @@ div[class^=jumpToPresentBar] {
 .mentioned__5126c:before {
   background: var(--brand-500);
 }
+
+/*remove the visual refresh title bar*/
+.visual-refresh {
+  div[class^="base_"] {
+      grid-template-rows: auto;
+
+      & > div[class^="bar_"] {
+          display: none;
+      }
+  }
+
+  ul[data-list-id="guildsnav"] > div[class^="itemsContainer_"] {
+      margin-top: 16px;
+  }
+}

@@ -222,8 +222,73 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 /* --- */
 
 
+/**
+* @name AlignedChatBox
+* @author CodeF53
+* @version 3.0
+* @description Aligns chat box with the bottom of the screen and user controls
+*/
+:is(main,section)[class^=chatContent] > form,
+form > div[class^=submitContainer] {
+  /* align chatbox */
+  padding: 0px;
+  > div > div[class^=channelTextArea] {
+    margin: 0px !important;
+    > div[class^=scrollableContainer] {
+      min-height: 49px;
+      padding-top: 4px;
+      border-radius: 0px;
+    }
+  }
+  /* align forum channel thing */
+  > div { margin-bottom: 0px; border-radius: 0px; }
+  
+  /* move slowmode/typing indicator to match */
+  > div[class^=typing] {
+    top: -24px;
+    right: calc(var(--custom-index-scrollbar-margin) * 2 + var(--custom-index-scrollbar-width));
+    margin-left: auto;
+    width: fit-content;
+    padding-left: 2px;
+    padding-right: 9px;
+    border-radius: 8px 8px 0px 0px;
+    background-color: var(--channeltextarea-background);
+  }
+  /* make scrollbar meet chatbox */
+  &::after { display: none; }
+
+  /* fix replies */
+  > div > div > div[class^=attachedBars] {
+    min-height: unset !important;
+    padding-bottom: 4px;
+  }
+}
+
+/* jump to present */
+div[class^=jumpToPresentBar] {
+  left: 0; right: unset;
+  border-radius: 0px 8px 0px 0px;
+  background-color: var(--channeltextarea-background);
+  > button[class^=barButtonMain] {
+    flex: 0 0 auto;
+    display: none;
+  }
+}
 
 
+
+
+/* Aligned Chat Box and Typing indicator */
+.container_c48ade {
+  --custom-chat-input-margin-bottom: 22px;
+}
+:root {
+  --custom-channel-textarea-text-area-height: 42px;
+}
+.visual-refresh .base_b88801 {
+  font-size: 13.5px;
+  height: 18px;
+}
 
 
 

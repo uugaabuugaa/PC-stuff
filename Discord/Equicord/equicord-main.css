@@ -235,7 +235,7 @@ form > div[class^=submitContainer] {
   > div > div[class^=channelTextArea] {
     margin: 0px !important;
     > div[class^=scrollableContainer] {
-      min-height: 49px;
+      min-height: 4px;
       padding-top: 4px;
       border-radius: 0px;
     }

@@ -222,27 +222,21 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 /* --- */
 
 
-/**
-* @name AlignedChatBox
-* @author CodeF53
-* @version 3.0
-* @description Aligns chat box with the bottom of the screen and user controls
-*/
+/* Unified Chatbar */
 :is(main,section)[class^=chatContent] > form,
 form > div[class^=submitContainer] {
   /* align chatbox */
   padding: 0px;
-  > div > div[class^=channelTextArea] {
-    margin: 0px !important;
-    > div[class^=scrollableContainer] {
-      min-height: 49px;
+  > div { margin-bottom: 0px; border-radius: 0px; }
+  > div[class^=channelBottomBarArea] {
+    > div { margin: 0px;  }
+    > div > div {
       padding-top: 4px;
+      min-height: 49px;
       border-radius: 0px;
     }
   }
-  /* align forum channel thing */
-  > div { margin-bottom: 0px; border-radius: 0px; }
-  
+
   /* move slowmode/typing indicator to match */
   > div[class^=typing] {
     top: -24px;

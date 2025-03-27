@@ -4,6 +4,10 @@
 @import url("https://nspc911.github.io/themes/vencord/RefreshedSeamlessChatBar.theme.css");
 @import url("https://nspc911.github.io/themes/vencord/ChatRelatedAlertsAtTop.theme.css");
 
+/*make the jump to present bar black*/
+.visual-refresh .bottomBar__0f481 {
+  background-color: rgb(0, 0, 0);}
+
 /**
   * @name Better Pickers
   * @author obsidianninja11

@@ -12,7 +12,7 @@
 /*make the new messages bar black*/
 .visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
   .newMessagesBar__0f481 {
-      background-color: #000000;
+       background-color: #000000;
   }
 }
 
@@ -24,7 +24,7 @@
   * @author obsidianninja11
   * @description Makes the soundboard/emoji pickers better and less intrusive.
   * @authorId 683171006717755446
-*/
+  */
 
 [class^=lockedEmoji_]:has(+[class*=emojiLockIconContainer_]),
 [class*=categorySectionNitroLocked_] [class*=emojiItem_]>img,

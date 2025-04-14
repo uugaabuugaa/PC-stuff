@@ -12,7 +12,6 @@
 /*make the new messages bar black*/
 visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
   .newMessagesBar__0f481 {
-      border: 1px solid var(--border-normal);
       background-color: #000000 !important;
   }
 }

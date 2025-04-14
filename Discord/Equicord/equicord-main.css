@@ -10,7 +10,7 @@
 
 
 /*make the new messages bar black*/
-visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
+.visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
   .newMessagesBar__0f481 {
       background-color: #000000 !important;
   }

@@ -184,6 +184,15 @@
 }
 
 
+/*margin on top of song name*/
+#vc-spotify-player {
+  & #vc-spotify-info-wrapper {
+      #vc-spotify-titles {
+        margin-top: 20px;}
+      }
+    }
+
+
 
 
 

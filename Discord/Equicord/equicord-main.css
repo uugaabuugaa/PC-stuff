@@ -1,5 +1,5 @@
 @import url("https://raw.githubusercontent.com/KrstlSkll69/vc-snippets/main/OtherStuff/RecolorAddFriendsTab.css");
-@import url("https://raw.githubusercontent.com/tom22k/discord-css/main/Themes/AndroidPlayer.css");
+
 @import url("https://minidiscordthemes.github.io/Snippets/MinimalSearchbar/main.css");
 @import url("https://nspc911.github.io/themes/vencord/RefreshedSeamlessChatBar.theme.css");
 @import url("https://nspc911.github.io/themes/vencord/ChatRelatedAlertsAtTop.theme.css");
@@ -81,59 +81,7 @@
 
 
 
-/*Use album cover as SpotifyControls background*/
-/*android spotify player*/
 
- #vc-spotify-player {
-    --android-blur-amount: 1.5px !important; /* adjust blur */
-    --android-darken-percent: 0.9 !important; /* adjust dark fading */
-    --your-font-here: roboto !important; /* choose a font, Roboto is default android font */
-    font-size: 10px;
-    height: 110px;
-}
-#vc-spotify-progress-bar [class^=slider_] [class^=bar_] [class^=barFill_] {
-    background-color: rgb(182, 163, 212) !important;
-    &::after {
-        display: none;
-    }
-}
-#vc-spotify-player::before,
-#vc-spotify-player::after {
-    border-radius: 0 !important;
-   height: 200%; 
-}
-#vc-spotify-player + [class^="container"] {
-    background: transparent;
-} 
-.theme-dark .content__37e49 {
-    background: transparent;
-}
-
-/* make shuffle and repeat buttons always white */
-#vc-spotify-player .vc-spotify-button:is([class*=repeat], [class*=shuffle]) {
-    &:not([class*=off]) {
-       color: rgb(182, 163, 212) !important;
-       &::after {
-          background-color: rgb(182, 163, 212) !important;
-      }
-   }
-}
-
-
-#vc-spotify-player {
-    & .vc-spotify-button-row {
-        & .vc-spotify-button {
-            &:has(.vc-spotify-pause, .vc-spotify-play) {
-                background: rgba(182, 163, 212, 0.75);
-                border-radius: 100%;
-                svg {
-                    fill: white;
-                    filter: none;
-                    }
-            }
-        }
-    }
-}
 /*unhide and remove on from album name*/ 
 #vc-spotify-titles .vc-spotify-ellipoverflow {
     max-height: 1.15rem !important;

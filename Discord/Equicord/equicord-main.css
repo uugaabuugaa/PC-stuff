@@ -561,7 +561,6 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 }
 .visual-refresh #app-mount .chatContent_f75fb0 .messagesWrapper__36d07 {
   .newTopicsBarContainer__0f481 {
-      border: 1px solid var(--border-normal);
       background-color: #09061a !important;
   }
 }

@@ -564,6 +564,13 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
       background-color: #09061a !important;
   }
 }
+.visual-refresh #app-mount .chatContent_f75fb0 .messagesWrapper__36d07 {
+  .newMessagesBar__0f481, .topicsPillContainer__0f481 {
+      background-color: #09061a  !important;
+  }
+}  
+
+
 
 
 /*make reply and mentioned highlight line same*/

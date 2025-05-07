@@ -125,17 +125,7 @@
 
 
 
-/*make the jump to present bar black*/
-.visual-refresh .bottomBar__0f481 {
-  background-color: #09061a ;}
 
-
-/*make the new messages bar black*/
-.visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
-  .newMessagesBar__0f481 {
-       background-color: #09061a !important;
-  }
-}
 
 
 
@@ -569,6 +559,21 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
       background-color: #09061a  !important;
   }
 }  
+
+
+/*make the jump to present bar black*/
+.visual-refresh .bottomBar__0f481 {
+  background-color: #09061a ;}
+
+
+/*make the new messages bar black*/
+.visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
+  .newMessagesBar__0f481 {
+       background-color: #09061a !important;
+  }
+}
+
+
 
 
 

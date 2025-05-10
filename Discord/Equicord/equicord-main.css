@@ -684,5 +684,5 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 /*Visual Refresh Seamless Chat Bar*/
 :root {
-    --rscb-chat-box-padding: 7px; 
+    --rscb-chat-box-padding: 10px; 
 }

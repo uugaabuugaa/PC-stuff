@@ -627,6 +627,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 }
 
 /*remove the visual refresh title bar*/
+/* 
 .visual-refresh {
   div[class^="base_"] {
       grid-template-rows: auto;

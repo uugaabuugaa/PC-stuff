@@ -290,6 +290,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 
 /*make settings a window*/
+/*
 .standardSidebarView__23e6b {
   position: absolute;
   width: 60vw;
@@ -358,6 +359,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
       .contentColumn__23e6b:not([id*="vencord"], [id*="vesktop"]) {
           /* vencord tabs excluded because they are literally the only ones that break lmfao */
+          /*
           min-width: 0px !important;
           width: 100%;
           padding: 0px 20px;

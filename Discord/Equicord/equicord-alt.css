@@ -460,7 +460,7 @@
 
 /*Visual Refresh Seamless Chat Bar*/
 :root {
-    --rscb-chat-box-padding: 1px; 
+    --rscb-chat-box-padding: 0.516px; 
 }
 .visual-refresh .form_f75fb0 {
     .channelTextArea_f75fb0 {

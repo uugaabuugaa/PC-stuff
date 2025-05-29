@@ -130,7 +130,7 @@
     --blur-amount: 2.5px; 
     --normal-bg-colour: var(--bg-overlay-floating, var(--background-base-low, var(--background-secondary-alt)));
 
-    position: static;
+    position: relative;
     background: linear-gradient(to bottom, transparent 0%, var(--normal-bg-colour) 100%) !important;
     overflow: hidden;
     transition: all 0.4s ease-out;

@@ -1,3 +1,5 @@
+/*@import url("https://raw.githubusercontent.com/uugaabuugaa/PC-stuff/refs/heads/main/Discord/Equicord/equicord-main.css");*/ 
+@import url("https://raw.githubusercontent.com/uugaabuugaa/PC-stuff/refs/heads/main/Discord/Equicord/equicord-alt.css"); 
 
 @import url('https://abbie.github.io/discord-css/import.css');
 @import url("https://raw.githubusercontent.com/tom22k/discord-css/main/Themes/AndroidPlayer.css");
@@ -24,8 +26,8 @@
 /* SETTINGS */
 :root {
   /* ACCENT COLORS */
-  --main-color: #9f87bb; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
-  --hover-color: #977eb4; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
+  --main-color: #806c97; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
+  --hover-color: #b095ce; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
   --success-color: #43b581; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
   --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
   /* STATUS COLORS */
@@ -150,6 +152,7 @@
 /*make the jump to present bar black*/
 .visual-refresh .bottomBar__0f481 {
   background-color: #1d032983 ;
+  
   margin-top: 1px;
   }
 
@@ -158,6 +161,7 @@
 .visual-refresh .chatContent_f75fb0 .messagesWrapper__36d07 {
   .newMessagesBar__0f481 {
        background-color: #1d032983 !important;
+       
   }
 }
 
@@ -1208,5 +1212,5 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 /*make mute button less unbearable*/
 button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
-    background-color: #977eb4;
+    background-color: #846ba0;
 }

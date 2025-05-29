@@ -44,6 +44,11 @@ Quote: https://userChrome.org | https://github.com/topics/userchrome
 /* Please write your custom CSS under this line*/
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+
+
+
+
+
 /*
 ====================================================
 Completely hide tabs strip, used together with Sidebery add-on
@@ -56,6 +61,11 @@ Completely hide tabs strip, used together with Sidebery add-on
     --chrome-content-separator-color: none !important;
  }
 }
+
+
+
+
+
 /*
 ====================================================
 Sidebery add-on autohide
@@ -81,6 +91,14 @@ See the above repository for updates as well as full license text. */
   width: var(--uc-sidebar-width) !important;
   max-width: var(--uc-sidebar-width) !important;
   z-index: var(--browser-area-z-index-sidebar,3);
+  /* Default state: no rounding on the right side */
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border: 1px transparent !important;
+  background-color: var(--toolbar-bgcolor) !important; /* Keep your background color */
+  transition: all 0.1s ease-in-out !important; /* Smooth transition for the rounding */
 }
 #sidebar-box[positionend]{ direction: rtl }
 #sidebar-box[positionend] > *{ direction: ltr }
@@ -115,6 +133,14 @@ See the above repository for updates as well as full license text. */
 #sidebar-box:hover > #sidebar{
   min-width: var(--uc-sidebar-hover-width) !important;
   transition-delay: 0ms !important;
+  /* When hovered, apply rounding to the right side */
+  border-top-right-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  /* Keep left side unrounded */
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border: 1px solid #fcbccd !important;
+  border-left: 2px solid #fcbccd !important;
 }
 
 .sidebar-panel{
@@ -166,6 +192,12 @@ from https://www.reddit.com/r/FirefoxCSS/comments/15swsq4/how_to_hide_this_dropd
 }
 
 
+
+
+
+
+
+
 /* HIDE BMS */
 /*
 #sidebar-select-box {
@@ -180,6 +212,15 @@ max-width: 42px !important;
 min-width: 42px !important;
 }
 */
+
+
+
+
+
+
+
+
+
 /* EXTENSION */
 
 /* Make extensions looks minimal */
@@ -225,6 +266,15 @@ min-width: 42px !important;
     align-items:left !important;
 }
 
+
+
+
+
+
+
+
+
+
 /* HIDE BMS */
 /*
 #sidebar-select-box {
@@ -246,26 +296,80 @@ margin-right: -8px !important;
 
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
 /*****Rounded Corners in Pages****/
 
-#tabbrowser-tabbox {
+/*#tabbrowser-tabbox {
   position: relative;
   overflow: hidden;
-}
+}*/
 
 /* inner rounded corners */
-#tabbrowser-tabbox::after {
+/*#tabbrowser-tabbox::after {
   content: "";
   inset: -13px;
   position: absolute;
-  border-top: 15px solid var(--toolbar-bgcolor);
-  border-right: 18px solid var(--toolbar-bgcolor);
-  border-bottom: 17px solid var(--toolbar-bgcolor);
-  border-left: 15px solid var(--toolbar-bgcolor);
+  border-top: 15px solid ;
+  border-right: 18px solid ;
+  border-bottom: 17px solid ;
+  border-left: 15px solid ;
   border-radius: 30px;
   z-index:1;
+  border-color: var(--toolbar-bgcolor) ;
  pointer-events:none;
+}*/
+
+#main-window {
+    & #tabbrowser-tabpanels browser[type] {
+        /*margin: var(--uc-content-margins) !important;
+        border-radius: var(--uc-content-border-radius) !important;*/
+        outline: 15px solid var(--toolbar-bgcolor) !important;        
+    }          
 }
+
+.browserStack>browser{
+margin: 4px !important;
+margin-top: 0px !important;
+border: 1px solid #252525 !important;
+border-radius: 20px !important;
+background-color: var(--toolbar-bgcolor) !important;
+border-color: #252525 !important;
+box-shadow: 2px 2px 2px #252525;
+}
+
+.browserStack > browser:hover {
+margin: 4px !important;
+margin-top: 0px !important;	
+border: 1px solid #fcbccd !important;
+border-radius: 20px !important;
+background-color: var(--toolbar-bgcolor) !important;
+border-color: #fcbccd !important;
+box-shadow: 2px 2px 2px #fcbccd;
+/*clip-path: xywh(0 0 100% 100% round 15px)
+/*outline: 8px solid #fcbccd !important; /* Pink outline when hovered */
+/*outline-offset: 2px !important; /* Visible offset when hovered */
+}
+
+
+
+
+
+
+
+
+
+
 
 /* window controls*/
 @media (-moz-platform: windows), (-moz-platform: windows-win10) {
@@ -320,6 +424,8 @@ margin-right: -8px !important;
   .titlebar-buttonbox * {
     width: 35px;
     height: 38px;
+	border-radius: 5px;
+	color: #fcbccd;
   }
  
   #nav-bar {
@@ -352,5 +458,997 @@ margin-right: -8px !important;
 
 #nav-bar {
   border-right: none !important;
-  margin-right: 135px !important;
+  margin-right: 108px !important;
 }
+
+
+
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_toolbox.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Hide the whole toolbar area unless urlbar is focused or cursor is over the toolbar
+ * Dimensions on non-Win10 OS probably needs to be adjusted.
+ */
+
+:root{
+  --uc-autohide-toolbox-delay: 200ms; /* Wait 0.1s before hiding toolbars */
+  --uc-toolbox-rotation: 82deg;  /* This may need to be lower on mac - like 75 or so */
+}
+
+:root[sizemode="maximized"]{
+  --uc-toolbox-rotation: 88.5deg;
+}
+
+@media  (-moz-platform: windows){
+  :root:not([lwtheme]) #navigator-toolbox{ background-color: -moz-dialog !important; }
+}
+
+:root[sizemode="fullscreen"],
+:root[sizemode="fullscreen"] #navigator-toolbox{ margin-top: 0 !important; }
+
+#navigator-toolbox{
+  --browser-area-z-index-toolbox: 4;
+  position: fixed !important;
+  background-color: var(--lwt-accent-color,black) !important;
+  transition: transform 82ms linear, opacity 82ms linear !important;
+  transition-delay: var(--uc-autohide-toolbox-delay) !important;
+  transform-origin: top;
+  transform: rotateX(var(--uc-toolbox-rotation));
+  opacity: 0;
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 100vw;
+}
+:root[sessionrestored] #urlbar[popover]{
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 82ms linear var(--uc-autohide-toolbox-delay), opacity 0ms calc(var(--uc-autohide-toolbox-delay) + 82ms);
+  transform-origin: 0px calc(0px - var(--tab-min-height) - var(--tab-block-margin) * 2);
+  transform: rotateX(89.9deg);
+}
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#selection-shortcut-action-panel,#chat-shortcuts-options-panel,#tab-preview-panel)) ~ toolbox #urlbar[popover],
+#navigator-toolbox:is(:hover,:focus-within,[movingtab]) #urlbar[popover],
+#urlbar-container > #urlbar[popover]:is([focused],[open]){
+  pointer-events: auto;
+  opacity: 1;
+  transition-delay: 33ms;
+  transform: rotateX(0deg);
+}
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#selection-shortcut-action-panel,#chat-shortcuts-options-panel,#tab-preview-panel)) ~ toolbox,
+#navigator-toolbox:has(#urlbar:is([open],[focus-within])),
+#navigator-toolbox:is(:hover,:focus-within,[movingtab]){
+  transition-delay: 33ms !important;
+  transform: rotateX(0);
+  opacity: 1;
+}
+/* This makes things like OS menubar/taskbar show the toolbox when hovered in maximized windows.
+ * Unfortunately it also means that other OS native surfaces (such as context menu on macos)
+ * and other always-on-top applications will trigger toolbox to show up. */
+@media (-moz-bool-pref: "userchrome.autohide-toolbox.unhide-by-native-ui.enabled"),
+       -moz-pref("userchrome.autohide-toolbox.unhide-by-native-ui.enabled"){
+  :root[sizemode="maximized"]:not(:hover){
+    #navigator-toolbox:not(:-moz-window-inactive),
+    #urlbar[popover]:not(:-moz-window-inactive){
+      transition-delay: 33ms !important;
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+#navigator-toolbox > *{ line-height: normal; pointer-events: auto }
+
+/* Don't apply transform before window has been fully created */
+:root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
+
+:root[customizing] #navigator-toolbox{
+  position: relative !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+#navigator-toolbox[inFullscreen] > #PersonalToolbar,
+#PersonalToolbar[collapsed="true"]{ display: none }
+
+/* This is a bit hacky fix for an issue that will make urlbar zero pixels tall after you enter customize mode */
+#urlbar[breakout][breakout-extend] > .urlbar-input-container{
+  padding-block: calc(min(4px,(var(--urlbar-container-height) - var(--urlbar-height)) / 2) + var(--urlbar-container-padding)) !important;
+}
+
+/* Uncomment this if tabs toolbar is hidden with hide_tabs_toolbar.css */
+/*#titlebar{ margin-bottom: -9px }*/
+
+/* Uncomment the following for compatibility with tabs_on_bottom.css - this isn't well tested though */
+/*
+#navigator-toolbox{ flex-direction: column; display: flex; }
+#titlebar{ order: 2 }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Move Picture-In-Picture Controls to the top on small sizes */
+@-moz-document url("chrome://global/content/pictureinpicture/player.xhtml") {
+
+    @media (width <= 630px) {
+        #audio {
+            position: absolute !important;
+            top: calc(10px - (100vh - 2 * var(--resize-margin)) + var(--controls-bottom-upper-height) + var(--player-control-item-height) + var(--controls-bottom-distance)) !important;
+            left: calc(10px + var(--player-control-item-height) + 10px) !important;
+            width: var(--player-control-item-height) !important;
+            height: var(--player-control-item-height) !important;
+            z-index: 14 !important;
+            grid-area: initial !important;
+        }
+
+        #audio::after {
+            display: none !important;
+        }
+
+        #audio-scrubber {
+            display: block !important;
+            position: absolute !important;
+            top: calc(10px - (100vh - 2 * var(--resize-margin)) + var(--controls-bottom-upper-height) + var(--player-control-item-height) + var(--controls-bottom-distance)) !important;
+            left: calc(10px + var(--player-control-item-height) + 10px) !important;
+            width: calc(var(--player-control-item-height) + 5px + clamp(80px, 20vw, 120px) + 5px) !important;
+            height: var(--player-control-item-height) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            z-index: 13 !important;
+            -moz-appearance: auto !important;
+            appearance: auto !important;
+            background: transparent !important;
+            padding-left: calc(var(--player-control-item-height) + 5px) !important;
+            padding-right: 5px !important;
+            border: initial !important;
+            box-sizing: border-box !important;
+            transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s, width 0.25s ease-in-out;
+        }
+
+        #audio:hover + #audio-scrubber,
+        #audio-scrubber:hover {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+    }
+
+    @media (width <= 280px) {
+        #audio-scrubber {
+            width: calc(var(--player-control-item-height) + 5px + clamp(40px, 10vw, 70px) + 5px) !important;
+        }
+    }
+
+    @media (width <= 300px) {
+        .controls-bottom-lower {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .center-controls {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*https://github.com/SakuraMeadows/Sakuras-Simple-Sidebar/blob/main/chrome/sidebery.css*/
+
+/*****amoledDarkTheme.css*****/
+:root{
+  --background-color: #000000;
+  --background-color2: #111111;
+  --background-color3: #0b0b0b;
+  --link-color: #5bcefa !important;
+}
+
+/****changeColors.css****/
+/* Change color of toolbar elements */
+#TabsToolbar{
+  background: var(--background-color3) !important;
+  height: 150px !important;
+}
+#tabbrowser-arrowscrollbox > .tabbrowser-tab{
+  background: var(--background-color2) !important;
+  margin: 4px 2px 0px 2px !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+#nav-bar, #PersonalToolbar{
+  background: var(--background-color) !important;
+}
+#urlbar{
+  background: ver(--background-color2) !important;
+  color: var(--accent-color) !important;
+  border-radius: 5px !important;
+}
+#urlbar:hover{
+  outline: 1px solid var(--accent-color) !important;
+  border-radius: 5px !important;
+}
+
+/* Change Color of App Menu Seperator */
+#appMenu-fxa-separator{
+  border-image: linear-gradient(90deg, var(--accent-color) 0%, lch(from var(--accent-color) l c calc(h - 100)) 100%) 1 !important;
+}
+
+/* Change color of right click context menu */
+.menupopup-arrowscrollbox{
+  background-color: var(--background-color) !important;
+  color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Change Color of Selected Tab */
+#tabbrowser-arrowscrollbox > .tabbrowser-tab[selected="true"]{
+  background: var(--background-color) !important;
+}
+/* Remove Selection highlight over Selected Tab */
+.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background{
+  display: none !important;
+}
+
+/* Change color of urlbar pupup background */
+#urlbar-background{
+  background: var(--background-color) !important;
+}
+
+/* Color icons */
+#nav-bar-customization-target toolbarbutton .toolbarbutton-icon,
+#PanelUI-menu-button .toolbarbutton-icon,
+#fxa-toolbar-menu-button > stack{
+  fill: var(--accent-color) !important;
+}
+
+/* Force tabs to stay the same color when the window is inactive */
+#TabsToolbar:-moz-window-inactive {
+    background-color: --background-color3 !important;
+    opacity: 1 !important;
+}
+
+/* Change color of Downloads and Extensions popup menus*/
+#downloadsPanel-mainView,
+#unified-extensions-view{
+  background-color: var(--background-color) !important;
+  color: var(--accent-color) !important;
+}
+
+/* Change Color of Popup Windows*/
+slot{
+  background-color: var(--background-color) !important;
+  color: var(--accent-color) !important;
+  border-radius: 10px !important;
+  border-width: 1px !important;
+}
+slot:hover{
+  border-color: var(--accent-color) !important;
+}
+
+/* Change color of bookmarks bar text */
+#PlacesToolbar{
+  color: var(--accent-color) !important;
+}
+/* Change color of bookmarks bar icons */
+.toolbarbutton-icon{
+  fill: var(--accent-color) !important;
+}
+
+/* Change the color of the little box in the address bar */
+#identity-box,
+#identity-icon-box,
+#urlbar-searchmode-switcher{
+  background-color: var(--background-color2) !important;
+  color: var(--accent-color) !important;
+}
+
+/****userChrome.css****/
+:root{
+    --accent-color: #fcbccd; /* Change this color to your liking, default is a Cherry Blossom Pink. Used in Amoled, Dark, and Darker color themes */
+    --accent-color-light: #ca56ab; /* Change this color to your liking, default is a Medium Pink. Used in light theme */
+}
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_centered_text.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important; }
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_info_icons_on_hover.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Hides info icons (except remote control icon) on the left side of urlbar and shows them when urlbar is hovered. Also hides container name and shows it on hover*/
+
+#urlbar-search-button,
+#tracking-protection-icon-container,
+#identity-box,
+#identity-box.extensionPage #identity-icon-label{
+  max-width: 0px;
+  transition: max-width 100ms linear !important;
+  overflow: hidden;
+}
+
+#identity-box.extensionPage{ max-width: 32px }
+
+#urlbar:hover .urlbar-input-container > box,
+#urlbar:hover #identity-box.extensionPage #identity-icon-label{
+  max-width: 300px;
+}
+#urlbar:not(:hover) #userContext-label{ display: none }
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/context_menus_more_proton.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds more proton-like styling to context menus. Rounded rows, and more consistent padding. This is only going to work on Win10+ */
+
+:root{
+  --arrowpanel-menuitem-margin: 0 8px;
+  --arrowpanel-menuitem-padding-block: 8px;
+  --arrowpanel-menuitem-padding-inline: 8px;
+  --arrowpanel-menuitem-border-radius: 4px;
+  --panel-separator-margin-vertical: 4px;
+  --button-hover-bgcolor: rgb(82, 82, 94);
+}
+:root[uidensity="compact"] menupopup:not(.in-menulist){
+  --panel-padding: 4px 0 !important;
+  --arrowpanel-menuitem-padding-block: 8px;
+}
+/* OPTIONAL Set custom context menu colors below */
+/*
+menupopup:not(.in-menulist){
+  --panel-background: #eb2a33 !important;
+  --panel-color: #4aa !important;
+  --panel-separator-color: #f00 !important;
+  --panel-border-color: ThreeDShadow !important;
+}
+menupopup > menuseparator{
+  border-color: var(--panel-separator-color,ThreeDShadow) !important;
+}
+*/
+menupopup{
+  --panel-item-hover-bgcolor: var(--button-hover-bgcolor);
+  --panel-border-radius: var(--arrowpanel-border-radius) !important;
+}
+menupopup > menuitem,
+menupopup > menu{
+  appearance: none !important;
+  margin: var(--arrowpanel-menuitem-margin) !important;
+  min-height: 24px !important;
+  padding: var(--arrowpanel-menuitem-padding-block) var(--arrowpanel-menuitem-padding-inline) !important;
+  border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+  background-color: transparent !important;
+}
+#context-navigation{
+  padding-inline: var(--arrowpanel-menuitem-padding-inline) !important;
+}
+.menu-right{
+  margin-inline-end: initial !important;
+}
+menupopup:not(.in-menulist){
+  --panel-padding: var(--arrowpanel-menuitem-padding-block) 0 !important;
+}
+
+:root[uidensity="compact"] #context-navigation{
+  padding-block: 0 !important;
+}
+menuseparator:not(.in-menulist){
+  margin-block: var(--panel-separator-margin-vertical) !important;
+}
+
+#context-navigation > menuitem[_moz-menuactive] :is(.menu-iconic-icon){
+  border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+}
+#context-navigation > menuitem[_moz-menuactive]:not([disabled]) :is(.menu-iconic-icon,.menu-icon),
+menupopup > menuitem[_moz-menuactive],
+menupopup > menu[_moz-menuactive]{
+  background-color: var(--panel-item-hover-bgcolor) !important;
+  color: var(--panel-color,inherit) !important;
+}
+menupopup > menuitem[disabled][_moz-menuactive],
+menupopup > menu[disabled][_moz-menuactive]{
+  background-color: var(--menuitem-disabled-hover-background-color) !important;
+}
+
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/compact_proton.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Small changes to make proton roughly as compact as the old compact mode */
+
+:root{
+  --toolbarbutton-inner-padding: 6px !important;
+  --tab-block-margin: 2px !important;
+  --tabs-shadow-size: 0px !important;
+  --arrowpanel-menuitem-padding-block: 5px !important;
+  --panel-font-size: inherit !important;
+  --arrowpanel-padding: 0.8em !important;
+  --inline-tab-padding: 8px !important; /* 8px is default value since it looks good - lower values compactify tabs horizontally */
+  --tab-inline-padding: 8px !important; /* Same as above, but for fx132 */
+}
+.subviewbutton.bookmark-item{ padding-block: 4px !important; }
+.subview-subheader{ display: block }
+menupopup > menuitem,
+menupopup > menu{ padding-block: 0.3em !important; }
+
+/* This is kinda weird, but it makes the horizontal line between tabs and nav-bar render "inside" nav-bar thus tabs are more visibily separated even if there is less space there */
+#nav-bar{ 
+  box-shadow: inset 0 var(--tabs-shadow-size) 0 var(--lwt-tabs-border-color) !important;
+}
+
+.tab-close-button{
+  margin-inline-start: 0px !important;
+  width: 20px !important;
+  height: 20px !important;
+  padding: 5px !important;
+}
+
+#tabbrowser-tabs{ --uc-tabs-scrollbutton-border: 2px }
+#scrollbutton-up,
+#scrollbutton-down{ border-block-width: var(--uc-tabs-scrollbutton-border,0px) !important; }
+
+/* OPTIONAL - show audio label in compact mode and make the audio icon behavior match non-compact mode */
+/*
+.tab-secondary-label:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture]){ display: flex !important; margin-bottom: 1px }
+#TabsToolbar:not(:hover) .tab-icon-image{ opacity: 1 !important; }
+#TabsToolbar:not(:hover) .tab-icon-overlay:not([pinned]){ opacity: 0 !important; }
+*/
+
+
+
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/floating_findbar_on_top.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* This style makes findbar appear as floating box at the top-left of the content area.
+ * If you want the findbar on right side instead then create a new pref
+ * userchrome.floating-findbar-on-right.enabled and set it to true and restart Firefox
+ * 
+ * Note that privacy.resistFingerprinting.letterboxing prevents this from working properly
+ */
+
+findbar{
+  order: -1;
+  margin-bottom: -33px;
+  position: relative;
+  border-top: none !important;
+  padding: 0 !important;
+  transition: transform 82ms linear, opacity 82ms linear 32ms !important;
+  background: none !important;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.findbar-container > .findbar-find-fast{
+  padding: var(--toolbarbutton-inner-padding) 1px;
+  margin: 0 !important;
+}
+
+findbar[hidden]{ transform: translateY(-30px);}
+
+findbar > .findbar-container,
+findbar > .close-icon{
+  border: 1px solid var(--chrome-content-separator-color);
+  border-width: 0 0 1px 0px;
+  background-color: var(--lwt-accent-color) !important;
+  background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)),var(--lwt-header-image,none);
+  pointer-events: auto;
+}
+
+findbar > .findbar-container{
+  border-bottom-right-radius: 4px;
+  border-right-width: 1px;
+  height: initial !important;
+  margin-inline: 0px !important;
+  overflow-inline: visible !important;
+}
+
+.findbar-find-status{
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+ 
+.findbar-closebutton{
+  margin: 0 !important;
+  border-radius: 0 !important;
+  padding: 5px !important;
+  width: initial !important;
+  order: -1;
+}
+.findbar-closebutton > image{ padding: 3px }
+.findbar-closebutton:hover > image{
+  background: var(--toolbarbutton-hover-background) !important;
+  border-radius: 4px
+}
+findbar > .findbar-container > hbox{ margin: 0 5px }
+ 
+findbar::after{
+  content:"";
+  display: flex;
+  flex-grow: 100;
+} 
+
+@media (-moz-bool-pref: "userchrome.floating-findbar-on-right.enabled"),
+       -moz-pref("userchrome.floating-findbar-on-right.enabled"){
+  findbar{
+    flex-direction: row-reverse;
+  }
+  findbar > .findbar-container{
+    flex-direction: row-reverse;
+    border-inline-width: 1px 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+  }
+  /*
+  Move findbar so it isn't over the scrollbar
+  Delete if you want findbar to begin from right window edge
+  */
+  findbar{
+    margin-right: 16px;
+    border-right: 1px solid var(--chrome-content-separator-color);
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_content_context_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to menuitems in web content area context menu.
+ * Note that this won't work if you have native context menus,
+ * such as ones used on MacOS */
+
+:where(#contentAreaContextMenu > menu:not(.menu-iconic))::before,
+:where(#contentAreaContextMenu > menuitem:not(.menuitem-iconic))::before{
+  display: flex;
+  padding-inline-end: 8px;
+  padding-top: 2px;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  content: url("chrome://browser/skin/tab.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+:where(#contentAreaContextMenu > menu),
+:where(#contentAreaContextMenu > menuitem){
+  padding-inline-start: 1em !important;
+}
+#contentAreaContextMenu > menuitem[type="checkbox"]::before{
+  content: url("chrome://devtools/skin/images/checkbox.svg");
+}
+#contentAreaContextMenu > menuitem[type="checkbox"] > :is(.menu-iconic-left,.menu-icon){
+  display: none;
+}
+#contentAreaContextMenu > menuitem[type="checkbox"][_moz-menuactive]::before,
+#contentAreaContextMenu > menuitem[type="checkbox"][checked="true"]::before{
+  background: no-repeat center left url("chrome://global/skin/icons/check.svg");
+}
+#contentAreaContextMenu > :is(.menu-iconic,.menuitem-iconic)::before{
+  content: none;
+}
+:where(#context-sep-navigation) ~ menuitem::before{
+  content: url("chrome://devtools/skin/images/tool-dom.svg");
+}
+:where(#context-sep-viewsource-commands) ~ menuitem::before{
+  content: url("chrome://browser/skin/translations.svg");
+}
+:where(#spell-suggestions-separator) ~ menuitem::before{
+  content: url("chrome://browser/skin/new-tab.svg");
+}
+:where(#context-sep-open) ~ menuitem::before{
+  content: url("chrome://browser/skin/bookmark-star-on-tray.svg");
+}
+:where(#context-savelinktopocket) ~ menuitem::before{
+  content: url("chrome://global/skin/icons/edit-copy.svg");
+}
+:where(#context-sep-copylink) ~ menuitem::before{
+  content: url("chrome://devtools/skin/images/play.svg");
+}
+:where(#context-media-sep-commands) ~ menuitem::before{
+  content: url("chrome://browser/skin/canvas.svg");
+}
+:where(#context-sep-sharing) ~ menuitem::before{
+  content: url("chrome://browser/skin/login.svg");
+}
+:where(#passwordmgr-items-separator) ~ menuitem::before{
+  content: url("chrome://global/skin/icons/edit.svg");
+}
+:where(#context-sep-screenshots) ~ menuitem::before{
+  content: url("chrome://global/skin/icons/search-glass.svg");
+}
+/* Individual items below */
+#context-openlink::before{
+  content: url("chrome://browser/skin/window.svg");
+}
+#context-openlinkprivate::before{
+  content: url("chrome://browser/skin/privateBrowsing.svg");
+}
+#context-savelinktopocket::before{
+  content: url("chrome://global/skin/icons/pocket-outline.svg");
+}
+#context-copylink::before,
+#context-stripOnShareLink::before,
+#context-copyaudiourl::before,
+#context-copyvideourl::before{
+  content: url("chrome://global/skin/icons/link.svg");
+}
+#context-saveaudio::before,
+#context-saveimage::before,
+#context-savelink::before,
+#context-savevideo::before,
+#context-savepage::before{
+  content: url("chrome://browser/skin/save.svg");
+}
+#context-pocket::before{
+  content: url("chrome://global/skin/icons/pocket.svg");
+}
+#contentAreaContextMenu > #fill-login::before{
+  content: url("chrome://browser/skin/login.svg");
+}
+#use-relay-mask::before{
+  content: url("chrome://browser/skin/preferences/relay-logo.svg");
+  transform: scale(0.85);
+}
+#context-copy::before,
+#context-pdfjs-copy::before{
+  content: url("chrome://global/skin/icons/edit-copy.svg");
+}
+#context-cut::before,
+#context-pdfjs-cut::before{
+  content: url("chrome://browser/skin/edit-cut.svg");
+}
+#context-paste-no-formatting::before,
+#context-paste::before,
+#context-pdfjs-paste::before{
+  content: url("chrome://browser/skin/edit-paste.svg");
+}
+#context-delete::before,
+#context-pdfjs-delete::before{
+  content: url("chrome://global/skin/icons/delete.svg");
+}
+#context-video-saveimage::before,
+#context-take-screenshot::before{
+  content: url("chrome://devtools/skin/images/command-screenshot.svg");
+}
+#context-sendpagetodevice::before,
+#context-sendlinktodevice::before{
+  content: url("chrome://browser/skin/synced-tabs.svg");
+}
+#context-media-play::before{
+  content: url("chrome://devtools/skin/images/play.svg");
+}
+#context-media-pause::before{
+  content: url("chrome://devtools/skin/images/pause.svg");
+}
+#context-media-mute::before{
+  content: url("chrome://global/skin/media/audio-muted.svg");
+  transform: scale(0.85);
+}
+#context-media-unmute::before{
+  content: url("chrome://global/skin/media/audio.svg");
+  transform: scale(0.85);
+}
+#context-media-hidecontrols::before,
+#context-media-showcontrols::before{
+  content: url("chrome://devtools/skin/images/dock-bottom.svg");
+}
+#context-media-loop::before{
+  content: url("chrome://browser/skin/notification-icons/autoplay-media.svg");
+}
+#context-leave-dom-fullscreen::before{
+  content: url("chrome://browser/skin/fullscreen-exit.svg");
+}
+#context-video-fullscreen::before{
+  content: url("chrome://browser/skin/fullscreen.svg");
+}
+#context-video-pictureinpicture::before{
+  content: url("chrome://global/skin/media/picture-in-picture-open.svg");
+}
+#context-media-playbackrate::before{
+  content: url("chrome://global/skin/icons/performance.svg");
+}
+#context-sendimage::before,
+#context-sendvideo::before,
+#context-sendaudio::before{
+  content: url("chrome://browser/skin/mail.svg");
+}
+#context-undo::before,
+#context-pdfjs-undo::before,
+#context-redo::before,
+#context-pdfjs-redo::before{
+  content: url("chrome://global/skin/icons/undo.svg");
+}
+#context-redo::before,
+#context-pdfjs-redo::before{
+  transform-box: content-box;
+  transform: scaleX(-1);
+}
+#context-selectall::before,
+#context-pdfjs-selectall::before,
+#context-pdfjs-highlight-selection::before{
+  content: url("chrome://global/skin/reader/character-spacing-20.svg");
+  transform: scale(0.85);
+}
+#context-reveal-password::before{
+  -moz-context-properties: fill,stroke;
+  stroke: currentColor;
+  content: url("chrome://devtools/skin/images/eye-opened.svg");
+}
+#context-print-selection::before{
+  content: url("chrome://global/skin/icons/print.svg");
+}
+#context-translate-selection::before,
+#spell-check-enabled::before,
+#spell-add-dictionaries-main::before,
+#spell-dictionaries::before{
+  content: url("chrome://browser/skin/translations.svg");
+}
+#context-ask-chat::before{
+  content: url("chrome://global/skin/icons/highlights.svg");
+}
+#context-bidi-text-direction-toggle::before,
+#context-bidi-page-direction-toggle::before{
+  content: url("chrome://devtools/skin/images/command-bidi.svg");
+}
+#context-viewpartialsource-selection::before,
+#context-viewsource::before{
+  content: url("chrome://browser/skin/characterEncoding.svg");
+}
+#context-inspect-a11y::before{
+  content: url("chrome://devtools/skin/images/accessibility.svg");
+}
+#context-inspect::before{
+  content: url("chrome://devtools/skin/images/open-inspector.svg");
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_main_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to main menu items which were removed in Proton */
+#appMenu-zoom-controls::before,
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before,
+#appMenu-protonMainView > .panel-subview-body > toolbarbutton > image,
+#appMenu-mainView > .panel-subview-body > .subviewbutton > .toolbarbutton-icon{
+  fill: currentColor;
+  -moz-context-properties: fill;
+  margin-inline: 0 8px !important;
+}
+#appMenu-zoom-controls::before,
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before{
+  display: flex;
+  content: "";
+  width: 16px;
+  height: 16px;
+}
+#appMenu-new-tab-button2{ list-style-image: url("chrome://browser/skin/new-tab.svg") }
+#appMenu-new-window-button2{ list-style-image: url("chrome://browser/skin/window.svg") }
+#appMenu-new-private-window-button2{ list-style-image: url("chrome://browser/skin/privateBrowsing.svg") }
+#appMenu-bookmarks-button{ list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg") }
+#appMenu-history-button{ list-style-image: url("chrome://browser/skin/history.svg") }
+#appMenu-downloads-button{ list-style-image: url("chrome://browser/skin/downloads/downloads.svg") }
+#appMenu-passwords-button{ list-style-image: url("chrome://browser/skin/login.svg") }
+#appMenu-extensions-themes-button{ list-style-image: url("chrome://mozapps/skin/extensions/extension.svg") }
+#appMenu-print-button2{ list-style-image: url("chrome://global/skin/icons/print.svg") }
+#appMenu-save-file-button2{ list-style-image: url("chrome://browser/skin/save.svg") }
+#appMenu-find-button2{ list-style-image: url("chrome://global/skin/icons/search-glass.svg") }
+#appMenu-settings-button{ list-style-image: url("chrome://global/skin/icons/settings.svg") }
+#appMenu-more-button2{ list-style-image: url("chrome://global/skin/icons/developer.svg") }
+#appMenu-report-broken-site-button{ list-style-image: url("chrome://global/skin/icons/warning.svg") }
+#appMenu-help-button2{ list-style-image: url("chrome://global/skin/icons/info.svg") }
+#appMenu-quit-button2{ list-style-image: url("chrome://devtools/skin/images/search-clear.svg") }
+#appMenu-translate-button{ list-style-image: url("chrome://browser/skin/translations.svg") }
+#appMenu-zoom-controls::before{ background-image: url("chrome://browser/skin/fullscreen.svg") }
+/* Use account-button icon for signed in sync item */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before{ background-image: var(--avatar-image-url) }
+/* Add somewhat hacky separator to zoom controls so it looks consistent */
+#appMenu-protonMainView > .panel-subview-body::after,
+#appMenu-mainView > .panel-subview-body::after{
+  content: "";
+  display: flex;
+  border-bottom: 1px solid var(--panel-separator-color);
+  margin: var(--panel-separator-margin);
+}
+#appMenu-translate-button ~ *{
+  order: 2;
+}
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_places_context_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to menuitems in context menus of bookmarks toolbar
+ * as well as bookmarks and history sidebars.
+ * Note that this won't work if you have native context menus,
+ * such as ones used on MacOS */
+
+:where(#placesContext > menu:not(.menu-iconic))::before,
+:where(#placesContext > menuitem:not(.menuitem-iconic))::before{
+  display: flex;
+  padding-inline-end: 8px;
+  padding-top: 2px;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  content: url("chrome://browser/skin/tab.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+:where(#placesContext > menu),
+:where(#placesContext > menuitem){
+  padding-inline-start: 1em !important;
+}
+#placesContext > menuitem[type="checkbox"]::before{
+  content: url("chrome://devtools/skin/images/checkbox.svg");
+}
+#placesContext > menuitem[type="checkbox"] > :is(.menu-iconic-left,.menu-icon){
+  display: none;
+}
+#placesContext > menuitem[type="checkbox"][_moz-menuactive]::before,
+#placesContext > menuitem[type="checkbox"][checked="true"]::before{
+  background: no-repeat center left url("chrome://global/skin/icons/check.svg");
+}
+#placesContext_openBookmarkContainer\:tabs::before,
+#placesContext_openBookmarkLinks\:tabs::before{
+  content: url("chrome://global/skin/icons/edit-copy.svg");
+}
+#placesContext_open\:newtab::before{
+  content: url("chrome://global/skin/icons/open-in-new.svg");
+}
+#placesContext_openContainer\:tabs::before,
+#placesContext_openLinks\:tabs::before{
+  content: url("chrome://global/skin/icons/edit-copy.svg");
+}
+#placesContext_open\:newwindow::before{
+  content: url("chrome://browser/skin/window.svg");
+}
+#placesContext_open\:newprivatewindow::before{
+  content: url("chrome://browser/skin/privateBrowsing.svg");
+}
+#placesContext_showInFolder::before,
+#placesContext_new\:folder::before{
+  content: url("chrome://global/skin/icons/folder.svg");
+}
+#placesContext_show_bookmark\:info::before,
+#placesContext_show\:info::before,
+#placesContext_show_folder\:info::before{
+  content: url("chrome://global/skin/icons/edit.svg");
+}
+#placesContext_deleteFolder::before,
+#placesContext_deleteBookmark::before,
+#placesContext_delete::before,
+#placesContext_delete_history::before{
+  content: url("chrome://global/skin/icons/delete.svg");
+}
+#placesContext_deleteHost::before{
+  content: url("chrome://browser/skin/forget.svg");
+}
+#placesContext_sortBy\:name::before{
+  content: url("chrome://browser/skin/sort.svg");
+}
+#placesContext_copy::before{
+  content: url("chrome://devtools/skin/images/copy.svg");
+}
+#placesContext_cut::before{
+  content: url("chrome://browser/skin/edit-cut.svg");
+}
+#placesContext_paste_group::before,
+#placesContext_paste::before{
+  content: url("chrome://browser/skin/edit-paste.svg");
+}
+#placesContext_new\:bookmark::before,
+#placesContext_createBookmark::before{
+  content: url("chrome://browser/skin/bookmark-hollow.svg");
+}
+#placesContext > #toggle_PersonalToolbar::before{
+  content: url("chrome://browser/skin/bookmarks-toolbar.svg");
+}
+#placesContext_showAllBookmarks::before{
+  content: url("chrome://browser/skin/library.svg");
+}
+#placesContext_new\:separator::before{
+  content: url("chrome://global/skin/reader/content-width-20.svg");
+  transform: scale(0.85);
+}
+
+
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/privatemode_indicator_as_menu_button.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Removes the private-browsing-mode indicator from tabs toolbar and changes the menu-button icon to the private-browsing indicator in private windows */
+
+#private-browsing-indicator-with-label,
+.private-browsing-indicator-with-label,
+.private-browsing-indicator{ display: none }
+:root[privatebrowsingmode="temporary"] #PanelUI-menu-button{
+  list-style-image: url("chrome://global/skin/icons/indicator-private-browsing.svg") !important;
+}
+
+
+
+
+
+
+
+

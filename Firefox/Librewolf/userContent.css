@@ -5,8 +5,8 @@
 @charset "UTF-8";
 /* Please write your custom CSS under this line*/
 @-moz-document url-prefix("http://"), url-prefix("https://") {
-a:link { color: #acd1d4 !important; }
-a:visited { color: #d3bad6 !important; }
-a:hover { color: #008FFC !important; }
-a:active { color: #7F14FF !important; }
+a:link { color: #fcbccd !important; }
+a:visited { color: #ad8dda!important; }
+a:hover { color: #c4dee0 !important; }
+a:active { color: #acd1d4 !important; }
 }

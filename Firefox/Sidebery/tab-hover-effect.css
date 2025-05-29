@@ -13,3 +13,20 @@
 .Tab:hover .title {
     margin-left: 5px;
 }
+
+
+#root_container{
+	--s-frame-bg: #000000;
+    --s-frame-fg: #fcbccd;
+	--s-act-el-fg: #fcbccd;
+}
+.Tab{
+	--tabs-activated-bg: #111111;
+}
+.ScrollBox{
+	--scroll-color: #fcbccd70;
+}
+
+#root.root {--ctx-menu-fg: #fcbccd;}
+#root.root {--ctx-menu-shadow: 0 0 0 1px #fcbccd, 0 1px 16px 0 rgba(0,0,0,0.282);}
+#root.root {--nav-btn-fg: #fcbccd;}

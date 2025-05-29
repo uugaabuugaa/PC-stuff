@@ -1,0 +1,138 @@
+/*
+ * Discord Custom AMOLED Purple Theme (Layered on ClearVision v7)
+ * Author: Your Name
+ * Version: 2.0
+ * Description: Overrides ClearVision v7 variables for an AMOLED dark theme with a purple accent,
+ * light chat text, and purple/pink/violet text in other areas.
+ */
+
+/* ========================================================================
+ * CUSTOM VARIABLES (Overriding ClearVision's Variables)
+ * ======================================================================== */
+:root {
+  /* --- AMOLED Base Colors (Overriding ClearVision's backgrounds) --- */
+  --background-primary: #000000 !important;   /* Pure black for main backgrounds */
+  --background-secondary: #0a0a0a !important; /* Slightly off-black for secondary elements */
+  --background-tertiary: #121212 !important;  /* Dark grey for tertiary elements */
+  --background-mobile-primary: #000000 !important; /* For mobile-like elements */
+  --background-mobile-secondary: #0a0a0a !important;
+
+  /* --- Chat Background Image (ClearVision's approach) --- */
+  --background-image: url('https://images.unsplash.com/photo-1549490349-8643362c397d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODA1NTF8MHwxfHNlYXJjaHwxfHxkYXJrJTIwcHVycGxlJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzE2OTAyNjY3fDA&ixlib=rb-4.0.3&q=80&w=1080') !important; /* Generic dark purple abstract image */
+  --background-image-position: center !important;
+  --background-image-size: cover !important;
+  --background-image-repeat: no-repeat !important;
+  --background-image-attachment: fixed !important;
+  --background-image-blur: 0px !important;       /* No blur */
+  --background-image-brightness: 0.8 !important; /* Slightly dim the image to blend with AMOLED */
+  --background-image-saturation: 1.0 !important; /* Normal saturation */
+  --background-image-contrast: 1.0 !important;   /* Normal contrast */
+  --background-image-opacity: 0.7 !important;    /* ClearVision's variable for image opacity. Adjust to control image visibility. */
+
+  /* --- General Text Colors --- */
+  --header-primary: #F0F0F0 !important;    /* Main headers/titles */
+  --header-secondary: #B0B0B0 !important;  /* Secondary headers/titles */
+  --text-normal: #F0F0F0 !important;       /* **Main chat text color (light grey, as requested)** */
+  --text-muted: #A0A0A0 !important;        /* Muted text (e.g., timestamps) - muted grey */
+  --text-link: #C78EE2 !important;         /* Link color - vibrant violet */
+
+  /* --- Channel List & Sidebar Text Colors (Purple/Pink/Violet Shades) --- */
+  --channels-default: #B19CD9 !important;      /* Default channel name text - muted lavender */
+  --channels-selected: #FFFFFF !important;     /* Text of selected channel - white for strong contrast */
+  --channels-hover: #E0B0FF !important;        /* Text when hovering over a channel - light lilac */
+  --channels-unread: #9B59B6 !important;       /* Unread channel indicator - primary purple accent */
+  --channels-header: #DDA0DD !important;       /* Channel category/list header text - plum/orchid */
+  --channels-muted: #808080 !important;        /* Muted channel text (ClearVision might have this) */
+
+  /* --- Accent Colors (Purple palette) --- */
+  --accent-color: #9B59B6 !important;         /* Primary purple accent for interactive elements */
+  --accent-color-hover: #8E44AD !important;   /* Slightly darker purple for hover states */
+  --accent-color-active: #7A2A9D !important;  /* Even darker/richer purple for active/selected states */
+  --accent-text-color: #FFFFFF !important;    /* Text color on accent backgrounds */
+  --accent-button-background: var(--accent-color) !important;
+  --accent-button-background-hover: var(--accent-color-hover) !important;
+  --accent-button-background-active: var(--accent-color-active) !important;
+
+  /* --- Miscellaneous Overrides for AMOLED look --- */
+  --message-background: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent black for message bubbles */
+  --input-background: #1a1a1a !important;             /* Dark background for text input fields */
+  --mention-background: var(--accent-color) !important; /* Mentions background */
+  --mention-text: var(--accent-text-color) !important;  /* Mentions text color */
+
+  /* ClearVision's own specific element adjustments */
+  --chat-messages-background: rgba(0, 0, 0, 0.5) !important; /* Another potential message background */
+}
+
+/* ========================================================================
+ * ADDITIONAL STYLES (Based on ClearVision's general class patterns)
+ * These target specific elements that might not be fully covered by variables,
+ * or provide additional styling (like rounded message corners).
+ * ======================================================================== */
+
+/* Ensure the main app background is pure black, letting ClearVision's image logic apply */
+.app__9d572 { /* This is a common top-level app wrapper class */
+  background-color: #000000 !important;
+}
+
+/* Chat content area - ClearVision applies its image here */
+.chatContent__5d691 { /* This is a common class for chat content */
+  background-color: transparent !important; /* Ensure the image defined by --background-image shows through */
+}
+
+/* Message bubbles */
+.message__2d83f .contents__06940,
+.message__2d83f .wrapper__48a7b { /* Common message classes */
+  background-color: var(--message-background) !important;
+  border-radius: 5px !important;
+}
+
+/* Chat input area */
+.form__00000 { /* ClearVision often targets this for the chat input box */
+  background-color: var(--input-background) !important;
+  border-radius: 8px !important; /* Slightly rounded for modern look */
+}
+.textArea__2c019 { /* Text area within the input */
+    color: var(--text-normal) !important;
+    background-color: transparent !important;
+}
+
+/* Scrollbar thumbs */
+.scrollerBase__5b2c7::-webkit-scrollbar-thumb,
+.scroller__154c1::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color) !important;
+}
+
+/* Mentions styling */
+.markup__84040 strong.mention {
+  background-color: var(--mention-background) !important;
+  color: var(--mention-text) !important;
+  border-radius: 3px !important;
+  padding: 0 3px !important;
+}
+
+/* Selection background */
+::selection {
+  background: var(--accent-color-hover) !important; /* Using hover accent for selection */
+  color: var(--accent-text-color) !important;
+}
+
+/* Channel list items (ClearVision often uses these directly) */
+/* This section primarily relies on ClearVision's internal handling of --channels-default, etc. */
+/* However, direct overrides for visual consistency are placed here. */
+.container__8b64e.selected__9464e .name__15456 { /* Selected channel name */
+    color: var(--channels-selected) !important;
+}
+.container__8b64e:hover .name__15456 { /* Hovered channel name */
+    color: var(--channels-hover) !important;
+}
+.container__8b64e .name__15456 { /* Default channel name */
+    color: var(--channels-text-color) !important;
+}
+
+/* Ensure channel headers are the desired color */
+.sidebar__23630 .header__2a873 { /* Generic sidebar header */
+    color: var(--channels-header) !important;
+}
+.scroller__154c1 .name__15456 { /* Category names in channel list */
+    color: var(--channels-header) !important;
+}

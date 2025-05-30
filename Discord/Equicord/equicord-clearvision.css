@@ -648,16 +648,17 @@ section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
 
 
 section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
- background-color: #0000003d !important;  
+ background-color: #00000000 !important;
+ bottom: -14px !important;  
 }
 
 .visual-refresh.refresh-fast-follow-avatars .container__37e49 {
-    bottom: -6px;
+    bottom: 5px;
 }
 
 .visual-refresh {
     #vc-spotify-player {
-      bottom:-6px !important; }
+      bottom: 6px !important; }
 }  
 
 

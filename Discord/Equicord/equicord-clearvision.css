@@ -35,12 +35,13 @@
   --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
   --offline-color: #f2c6fd; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
   /* APP BACKGROUND */
-  --background-shading-percent: 100%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
-  --background-image: url(https://wallpapercave.com/wp/wp4779312.jpg);*/ /*black*/
+  --background-shading-percent: 00%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
+  /*--background-image: url(https://wallpapercave.com/wp/wp4779312.jpg);*/ /*black*/
+  --background-image: url(https://i.imgur.com/4f49NII.jpeg);*/ /*blkprpl*/
   /*--background-image: url(https://i.imgur.com/RWSsMgv.jpeg); /*cor*/ /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
   /*--background-image: url(https://pbs.twimg.com/media/GSCcpk6awAArrL8?format=jpg&name=orig);*/ /*dome*/ /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
   /*--background-image: url(https://i.imgur.com/WgEPUuw.jpeg);*/ /*ditto*/
-  /*--background-image: url(https://wallpapercave.com/wp/wp11772367.jpg);*/ /*cor2*/
+  /*--background-image: url(https://i.imgur.com/tOpxhuW.jpeg);*/ /*cor2*/
   --background-position: center; /* app background position [default: center] */
   --background-size: cover; /* app background size (px) [default: cover] */
   --background-attachment: fixed; /* app background attachment [default: fixed] */
@@ -653,7 +654,7 @@ section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
 }
 
 .visual-refresh.refresh-fast-follow-avatars .container__37e49 {
-    bottom: -5px;
+    bottom: -7px;
 }
 
 .visual-refresh {
@@ -1232,4 +1233,33 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 /*make mute button less unbearable*/
 button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
     background-color: #846ba0;
+}
+
+
+
+/*make search a button*/
+.search__97492:not(.open__97492) > .searchBar__97492 {
+    width: 25px;
+    background: transparent;
+    border-color: transparent;
+}
+
+.searchBarComponent__35e86{
+    background: transparent;
+}
+
+.search__97492:not(.open__97492) .iconLayout_fea832 {
+    cursor: pointer;
+}
+
+.search__97492:not(.open__97492) .iconContainer_fea832 {
+    transform: scale(1.2);
+}
+
+.search__97492:not(.open__97492) .icon_fea832 {
+    color: var(--interactive-normal);
+}
+
+.search__97492:not(.open__97492):hover .icon_fea832 {
+    color: var(--interactive-active);
 }

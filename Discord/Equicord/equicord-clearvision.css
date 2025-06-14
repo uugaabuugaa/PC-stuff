@@ -647,7 +647,7 @@ section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
 
 
 
-
+/*user area fix*/
 section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
  background-color: #00000000 !important;
  bottom: 0px !important;  
@@ -1225,7 +1225,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 /*make channel tab's bottom margin smaller*/
  .vc-channeltabs-container {
-         margin-bottom: -5px; }
+         margin-bottom: -5px !important; }
 
 
 
@@ -1262,4 +1262,17 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 
 .search__97492:not(.open__97492):hover .icon_fea832 {
     color: var(--interactive-active);
+}
+
+
+
+
+
+/* Ultra-specific selector for Equicord/Equibop badge */
+/*[data-has-mention="false"].numberBadge__2b1f5.base__2b1f5.eyebrow__2b1f5.baseShapeRound__2b1f5 {
+    background-color: #FF0000 !important; 
+    box-shadow: 0 0 0 2px white !important; 
+}*/
+.visual-refresh {
+  --brand-500: #593695!important;
 }

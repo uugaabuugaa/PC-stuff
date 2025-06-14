@@ -1,0 +1,11 @@
+/*modern scrollbar*/
+.os-scrollbar-handle { 
+    width:0.25rem!important;
+    border-radius:10rem !important; 
+    transition: width 300ms ease-in-out;
+    background-color: var(--spice-button) !important;
+} 
+.os-scrollbar-handle:focus,.os-scrollbar-handle:focus-within,.os-scrollbar-handle:hover { 
+    width:0.35rem!important;
+    background-color: var(--spice-button-active) !important;
+}

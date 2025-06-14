@@ -1,0 +1,91 @@
+/* Zoom */
+/*html {
+  zoom: 90%!important;
+}*/
+
+
+/*hide friend activity button*/
+[aria-label='Friend Activity'] {display:none;}
+
+
+/*hide what's new button*/
+[aria-label="What's New"] {display:none;}
+
+
+
+/*scrollbar redesign*/
+.os-scrollbar-handle { 
+    width:0.25rem!important;
+    border-radius:10rem !important; 
+    transition: width 300ms ease-in-out;
+    background-color: var(--spice-button) !important;
+} 
+.os-scrollbar-handle:focus,.os-scrollbar-handle:focus-within,.os-scrollbar-handle:hover { 
+    width:0.35rem!important;
+    background-color: var(--spice-button-active) !important;
+}
+
+
+
+/*mnew hover panel*/
+#Desktop_LeftSidebar_Id {
+  position: absolute;
+  left: -280px;
+  width: 288px;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  visibility: visible;
+  transition: left 0.5s ease, opacity 0.5s ease;
+  z-index: 12;
+}
+#Desktop_LeftSidebar_Id:hover {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+:root {
+  margin-left: -8px;
+}
+
+
+
+/*remove connect bar*/
+.main-connectBar-connectBar {
+  display: none !important;}
+
+
+
+/*remove top spacing*/
+.Root__top-container:has([class*='yourLibraryX']) { padding-top: 28px; }
+
+
+
+/*violet-ed*/
+:root {
+    --spice-button: #a994e7 !important;
+    --spice-button-active: #8f50ed !important;
+    --spice-text: #ddc6ff !important;
+    --spice-subtext: #a69cc6 !important;
+    --spice-nav-active: #ddc6ff !important;
+}
+.main-home-filterChipsSection {
+    background-color: var(--background-base)  !important;
+    }
+
+
+
+/*window controls bg*/
+/* window controls background */
+.spotify__container--is-desktop:not(.fullscreen) body::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    z-index: 999;
+    backdrop-filter: brightness(2.12);
+    /* page zoom [ctrl][+] or [ctrl][-]
+       edit width and height accordingly
+    */
+    width: 148px;
+    height: 44px;
+}

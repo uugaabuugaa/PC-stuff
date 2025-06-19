@@ -1,0 +1,7 @@
+.main-nowPlayingWidget-trackInfo {
+    grid-template:
+        "title title"
+        "badges subtitle"
+        "pretitle pretitle"
+        "genres genres" / auto 1fr;
+}

@@ -100,3 +100,24 @@
         "pretitle pretitle"
         "genres genres" / auto 1fr;
 }
+
+
+
+/* fix playback bar */
+.x-progressBar-fillColor {
+    background-color: var(--spice-button) !important;
+}
+
+.playback-bar {
+    --playback-bar-grid-gap: 8px;
+    position: absolute !important;
+    bottom: 70px !important;
+}
+
+/* .playback-bar {
+    --playback-bar-grid-gap: 8px;
+    width: 35% !important;
+    position: absolute !important;
+    bottom: 5px !important;
+    left: 540px !important;
+} */

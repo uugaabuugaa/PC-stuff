@@ -773,10 +773,10 @@ html.custom-theme-background [class^="sidebar_"] [class^="panels_"] {
 
 
 /* Remove Settings Ads */
-div.side_a0 > div.item_a0[data-tab-id="Discord Nitro"] {
+div.side_aa8da2 > div.item_aa8da2[data-tab-id="Discord Nitro"] {
   display: none !important;
 }
-div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
+div.side_aa8da2 > div.item_aa8da2[data-tab-id="Nitro Server Boost"] {
   display: none !important;
 }
 /* --- */
@@ -898,7 +898,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
               margin-top: 66px;
           }
 
-          .headerContainer__6a750 {
+          .headerContainer_bdedd9 {
               justify-content: center;
           }
       }
@@ -928,7 +928,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
               color: white;
           }
 
-          .side_b3f026 {
+          .side_aa8da2 {
               overflow: visible !important;
               padding: 60px 8px 60px 16px;
           }
@@ -1007,9 +1007,9 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 
 /*unread bar text replace*/
-.text-xs-semibold_a3a2b4.barText__1a44f {font-size: 0px;}
-.text-xs-semibold_a3a2b4.barText__1a44f:before {font-size:12px; content: /*CHANGE TO WHATEVER*/ "more new shit ydgaf about"; position: absolute; top: 4px;}
-.bar__004d9 {width: 100px;} /* adjust if needed for bar width, incase the text goes off the bar*/
+.text-xs-semibold__767f1.barText__7aaec {font-size: 0px;}
+.text-xs-semibold__767f1.barText__7aaec:before {font-size:12px; content: /*CHANGE TO WHATEVER*/ "more new shit ydgaf about"; position: absolute; top: 4px;}
+.bar__7aaec {width: 100px;} /* adjust if needed for bar width, incase the text goes off the bar*/
 
 
 
@@ -1059,11 +1059,11 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 .link__2ea32 /* channels */,
 .childContainer__91a9d /* members */,
 .link__972a0 /* dms */,
-.side_b3f026 .item_b3f026 /* settings */ {
+.side_aa8da2 .item_aa8da2 /* settings */ {
     transition: margin-left 0.2s ease;
 }
 .link__2ea32:hover,
-.side_b3f026 .item_b3f026:hover {
+.side_aa8da2 .item_aa8da2:hover {
     margin-left: 10px;
 }
 .childContainer__91a9d:hover,
@@ -1118,7 +1118,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 
 /* reduce context menu padding */
-.layer_da8173 > .menu_c1e9c4 > .scroller_c1e9c4 {
+.layer__59d0d > .menu_c1e9c4 > .scroller_c1e9c4 {
     margin: -4px;
     .separator_c1e9c4 {
         margin: 1px 8px !important;
@@ -1161,7 +1161,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 
 /*Collapse clan tags to icon (with pazazz)*/
-[class^="chipletContainerInner_"] > span > .unselectable__10651 {
+[class^="chipletContainerInner_"] > span > .tagText__10651 {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -1171,7 +1171,7 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
               margin 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-[class^="chipletContainerInner_"]:hover > span > .unselectable__10651 {
+[class^="chipletContainerInner_"]:hover > span > .tagText__10651 {
   max-width: 20ch;
   margin-right: .3ch;
   /* Prevents it from triggering if you just quickly mouseover :D */

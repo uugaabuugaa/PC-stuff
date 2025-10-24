@@ -1305,5 +1305,5 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 
 /*make mic bg transparent*/
 button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
-    background-color: transparent;
+    background-color: transparent !important;
 }

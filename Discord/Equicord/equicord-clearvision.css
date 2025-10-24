@@ -286,6 +286,14 @@
     }
 }
 
+.slider_a562c8{
+    height: 24px;
+    position: absolute;
+    width: 50%;
+    left: 25px;
+    top: 18px
+}
+
  /* BetterSpotifyPlayer */
 /* icons instead of by,on */
 #vc-spotify-song-title::before,
@@ -1292,4 +1300,10 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 }*/
 .visual-refresh {
   --brand-500: #593695!important;
+}
+
+
+/*make mic bg transparent*/
+button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
+    background-color: transparent;
 }

@@ -1310,4 +1310,17 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 /*make mic bg transparent*/
 button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
     background-color: transparent !important;
+  }
+
+
+
+/* hide menus next to mute and deafen buttons */
+div[class^=micButtonParent__] {
+  button[role="switch"] {
+    border-radius: var(--radius-sm) !important;
+    
+    ~ button {
+      display: none;
+    }
+  }
 }

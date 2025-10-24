@@ -1223,11 +1223,28 @@ div.side_a0 > div.item_a0[data-tab-id="Nitro Server Boost"] {
 
 
 
-/*make channel tab's bottom margin smaller*/
+/*fix channel tabs*/
  .vc-channeltabs-container {
          margin-bottom: -5px !important; }
+.vc-channeltabs-container-top {
+    padding-left: 0px;
+    }
 
+.vc-channeltabs-tab {
+    border-radius: 5px;
+    min-width: 0;
+    margin: 0 0px;
+    padding: 3px 0px;
+}
 
+.vc-channeltabs-tab.vc-channeltabs-tab-compact.vc-channeltabs-tab-selected {
+  border-color: #f2c6fd !important;
+}
+
+.vc-channeltabs-tab.vc-channeltabs-tab-compact{
+ border-color: #00000000 !important;
+  
+}
 
 
 /*make mute button less unbearable*/

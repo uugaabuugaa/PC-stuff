@@ -492,6 +492,17 @@
 
 
 
+/*hide clearvision tag*/
+.leading_c38106 {
+    gap: 0;
+    margin: 0 6px;
+    visibility: hidden !important;
+}
+
+
+
+
+
 
 /*Visual Refresh Seamless Chat Bar(https://nspc911.github.io/themes/vencord/RefreshedSeamlessChatBar.theme.css)*/
 :root {

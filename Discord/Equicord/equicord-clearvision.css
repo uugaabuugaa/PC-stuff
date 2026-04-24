@@ -1259,7 +1259,7 @@ div.side_aa8da2 > div.item_aa8da2[data-tab-id="Nitro Server Boost"] {
 
 /*fix channel tabs*/
  .vc-channeltabs-container {
-         margin-bottom: -5px !important; }
+         margin-bottom: 5px !important; }
 .vc-channeltabs-container-top {
     padding-left: 0px;
     }

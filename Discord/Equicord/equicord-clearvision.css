@@ -399,6 +399,7 @@
 
 
 /*remove the visual refresh title bar (https://github.com/surgedevs/visual-refresh-compact-title-bar)*/
+/*
 .visual-refresh {
     --vr-header-snippet-top: 0px;
     --vr-header-snippet-server-padding: 16px;
@@ -487,7 +488,7 @@
         margin-top: var(--vr-header-snippet-server-padding);
     }
 }
-
+*/
 
 
 

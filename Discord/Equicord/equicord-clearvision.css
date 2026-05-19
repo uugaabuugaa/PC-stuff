@@ -317,7 +317,7 @@
    background-color: var(--header-secondary);
   /* Spotify wave thingy fix */
   /*background-color: hsla(var(--spotify-vencord-text)/1);*/
-}
+
 
 /*
 #vc-spotify-song-title::before {

@@ -53,6 +53,7 @@
 [aria-label='Friend Activity'] {display:none;}
 [aria-label="What's New"] {display:none;}
 [aria-label="Listening activity"] {display:none;}
+.main-topBar-buddyFeed { background-color: transparent;}
 
 
 /*dynamic sidebar*/

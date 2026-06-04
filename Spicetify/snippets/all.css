@@ -74,3 +74,16 @@ svg[data-encore-id='icon']{
 #Desktop_LeftSidebar_Id span {
   white-space: nowrap;
 }
+
+
+/*albumInfo positioning*/
+.main-nowPlayingWidget-trackInfo {
+    grid-template:
+        "title title"
+        "badges subtitle"
+        "pretitle pretitle"
+        "genres genres" / auto 1fr !important;
+}
+#album-info-extension {
+    grid-area: pretitle;
+}

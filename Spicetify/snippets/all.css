@@ -48,7 +48,29 @@
     left: -15px !important;
 }
 
+
 /*hide random stuff*/
 [aria-label='Friend Activity'] {display:none;}
 [aria-label="What's New"] {display:none;}
 [aria-label="Listening activity"] {display:none;}
+
+
+/*dynamic sidebar*/
+#Desktop_LeftSidebar_Id {
+  width: 0px;
+  transition: width 0.1s ease, padding-left 0.1s ease;
+  z-index: 12;
+}
+#Desktop_LeftSidebar_Id:hover {
+  padding-left: 8px;
+  width: 280px;
+}
+:root {
+  margin-left: -8px;
+}
+svg[data-encore-id='icon']{
+  overflow: visible;
+}
+#Desktop_LeftSidebar_Id span {
+  white-space: nowrap;
+}

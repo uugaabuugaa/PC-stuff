@@ -1,0 +1,54 @@
+/*violeted*/
+:root {
+    --spice-button: #a994e7 !important;
+    --spice-button-active: #8f50ed !important;
+    --spice-text: #ddc6ff !important;
+    --spice-subtext: #a69cc6 !important;
+    --spice-nav-active: #ddc6ff !important;
+}
+.main-home-filterChipsSection {
+    background-color: var(--background-base)  !important;
+    }
+    
+/*scrollbar redesign*/
+.os-scrollbar-handle { 
+    width:0.25rem!important;
+    border-radius:10rem !important; 
+    transition: width 300ms ease-in-out;
+    background-color: var(--spice-button) !important;
+} 
+.os-scrollbar-handle:focus,.os-scrollbar-handle:focus-within,.os-scrollbar-handle:hover { 
+    width:0.35rem!important;
+    background-color: var(--spice-button-active) !important;
+}
+
+
+/*top-filter-bar*/
+.main-home-filterChipsSection {
+    background-color: rgba(var(--spice-rgb-shadow), .6) !important;
+}
+.main-home-filterChipsSection.fIvMht6B9HdROywMNJZ4 {
+    background-color: rgba(var(--spice-rgb-shadow), .6);
+}
+.main-home-filterChipsSection.fIvMht6B9HdROywMNJZ4:after {
+    background-color: rgba(var(--spice-rgb-shadow), .6);
+}
+.main-topBar-container { background-color: black !important;}
+
+
+/*progressbar fix*/
+.x-progressBar-fillColor {
+    background-color: var(--spice-button) !important;
+}
+.playback-bar {
+    --playback-bar-grid-gap: 8px;
+    /* width: 100%; */
+    position: relative !important;
+    bottom: 0px !important;
+    left: -15px !important;
+}
+
+/*hide random stuff*/
+[aria-label='Friend Activity'] {display:none;}
+[aria-label="What's New"] {display:none;}
+[aria-label="Listening activity"] {display:none;}

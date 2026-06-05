@@ -45,7 +45,7 @@
     /* width: 100%; */
     position: relative !important;
     bottom: 0px !important;
-    left: -15px !important;
+    left: 0px !important;
 }
 
 
@@ -54,7 +54,6 @@
 [aria-label="What's New"] {display:none;}
 [aria-label="Listening activity"] {display:none;}
 .main-topBar-buddyFeed { background-color: transparent;}
-
 
 /*dynamic sidebar*/
 #Desktop_LeftSidebar_Id {

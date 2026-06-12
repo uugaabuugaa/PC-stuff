@@ -1,0 +1,115 @@
+youtube.com##ytd-rich-grid-row, #contents.ytd-rich-grid-row:style(display:contents !important;)
+
+youtube.com##ytd-rich-grid-renderer:style(--ytd-rich-grid-items-per-row: 5 !important;)
+
+! YT Home - Hide Videos Below 1K Views
+www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
+! YT Sidebar - Hide Videos Below 1K Views
+www.youtube.com##ytd-compact-video-renderer:has(#video-title[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
+! YT Sidebar - Hide Videos Below 1K Views (backup version - less efficient)
+www.youtube.com##ytd-compact-video-renderer:not(:has(#video-title[aria-label~="views"])) #metadata-line>span:first-of-type:not(:has-text(/[KMB]\b/)):upward(ytd-compact-video-renderer)
+! YT Player End Cards - Hide Videos Below 1K Views
+www.youtube.com##.ytp-videowall-still[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"]))
+
+
+
+
+
+
+
+
+
+! Title: Hide YouTube Shorts
+! Description: Hide all traces of YouTube shorts videos on YouTube
+! Version: 1.10.0
+! Last modified: 2024-08-31 19:24
+! Expires: 2 weeks (update frequency)
+! Homepage: https://github.com/gijsdev/ublock-hide-yt-shorts
+! License: https://github.com/gijsdev/ublock-hide-yt-shorts/blob/master/LICENSE.md
+
+! Remove empty spaces in grid
+www.youtube.com##ytd-rich-grid-row,#contents.ytd-rich-grid-row:style(display: contents !important)
+
+! Hide all videos containing the phrase "#shorts"
+www.youtube.com##ytd-grid-video-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+www.youtube.com##ytd-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+
+! Hide all videos with the shorts indicator on the thumbnail
+www.youtube.com##ytd-grid-video-renderer:has([overlay-style="SHORTS"])
+www.youtube.com##ytd-rich-item-renderer:has([overlay-style="SHORTS"])
+www.youtube.com##ytd-video-renderer:has([overlay-style="SHORTS"])
+www.youtube.com##ytd-item-section-renderer.ytd-section-list-renderer[page-subtype="subscriptions"]:has(ytd-video-renderer:has([overlay-style="SHORTS"]))
+
+! Hide shorts button in sidebar
+www.youtube.com##ytd-guide-entry-renderer:has(yt-formatted-string:has-text(/^Shorts$/i))
+! Tablet resolution
+www.youtube.com##ytd-mini-guide-entry-renderer:has(.title:has-text(/^Shorts$/i))
+
+! Hide shorts sections except on history page
+www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
+www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
+
+! Hide shorts tab on channel pages`
+! Old style
+www.youtube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))
+! New style (2023-10)
+www.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
+
+! Hide short remixes in video descriptions and in suggestions beside the comments
+www.youtube.com##ytd-reel-shelf-renderer:has(#title:has-text(/(^| )Shorts.?Remix.*$/i))
+
+! Hide shorts category on homepage and search pages
+www.youtube.com##yt-chip-cloud-chip-renderer:has(yt-formatted-string:has-text(/^Shorts$/i))
+
+!!! MOBILE !!!
+
+! Hide all videos in home feed containing the phrase "#shorts"
+www.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+
+! Hide all videos in subscription feed containing the phrase "#shorts"
+m.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+
+! Hide shorts button in the bottom navigation bar
+m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
+
+! Hide all videos with the shorts indicator on the thumbnail
+m.youtube.com##ytm-video-with-context-renderer:has([data-style="SHORTS"])
+
+! Hide shorts sections except on history page
+m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
+m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
+
+! Hide shorts tab on channel pages
+! Old style
+m.youtube.com##.single-column-browse-results-tabs>a:has-text(Shorts)
+! New style (2023-10)
+m.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
+
+! Hide short remixes in video descriptions and in suggestions below the player
+m.youtube.com##ytm-reel-shelf-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts.?Remix.*$/i))
+
+! Hide shorts category on homepage
+m.youtube.com##ytm-chip-cloud-chip-renderer:has(.yt-core-attributed-string:has-text(/^Shorts$/i))
+
+! Apr 23, 2025 https://www.youtube.com
+www.youtube.com###guide-content > .ytd-app.style-scope
+
+! Sep 17, 2025 https://soccerfullmatch.com
+||soccerfullmatch.com/wp-content/uploads/2024/12/18ad.webp$image
+
+! Feb 22, 2026 https://x.com
+x.com##a.r-1loqt21.r-1ny4l3l.r-1mkv55d.r-13qz1uu.r-1habvwh.r-16y2uox.r-eqz5dr.r-6koalj.css-175oi2r:nth-of-type(8)
+
+! Feb 27, 2026 https://x.com
+x.com##.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-3pj75a.r-cnw61z.r-1777fci.r-1uusn97.r-sdzlij.r-l5o3uw.css-175oi2r
+
+
+
+
+missav.*##.truncate:style(white-space: normal !important; overflow: visible !important; text-overflow: unset !important;)
+missav.*##.max-h-14:style(max-height: 12.5rem !important; overflow-y: hidden !important;)
+sextb.net##.tray-item-description .tray-item-title:style(max-height: 200px !important; font-size: 12px !important; overflow: visible !important; white-space: normal !important;)
+
+! May 10, 2026 https://streamed.pk
+streamed.pk##.svelte-4ozyh1.bg-background.chat-container.relative.p-2.drop-shadow-lg.rounded-lg.border-2.border-border\/40.w-full
+

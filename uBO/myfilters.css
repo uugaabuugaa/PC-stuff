@@ -1,19 +1,29 @@
+! YT number of vids in rows
 youtube.com##ytd-rich-grid-row, #contents.ytd-rich-grid-row:style(display:contents !important;)
 
 youtube.com##ytd-rich-grid-renderer:style(--ytd-rich-grid-items-per-row: 5 !important;)
 
-! YT Home - Hide Videos Below 1K Views
-www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
-! YT Sidebar - Hide Videos Below 1K Views
-www.youtube.com##ytd-compact-video-renderer:has(#video-title[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
-! YT Sidebar - Hide Videos Below 1K Views (backup version - less efficient)
-www.youtube.com##ytd-compact-video-renderer:not(:has(#video-title[aria-label~="views"])) #metadata-line>span:first-of-type:not(:has-text(/[KMB]\b/)):upward(ytd-compact-video-renderer)
-! YT Player End Cards - Hide Videos Below 1K Views
-www.youtube.com##.ytp-videowall-still[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"]))
+
+
+! YT Home - Hide Videos Below 1K Views////https://old.reddit.com/r/uBlockOrigin/comments/1u0875r/i_need_youtube_expertise_support/oqv8wxw/////
+!   Homepage 20250924
+youtube.com###primary ytd-rich-grid-renderer #contents ytd-rich-item-renderer yt-content-metadata-view-model > div + div > span:first-child:not(:has-text(/(\d[KMB]|\d\D\d{3})\b/)):upward(ytd-rich-item-renderer)
+youtube.com###primary ytd-rich-grid-renderer #contents ytd-rich-section-renderer ytd-rich-item-renderer h3 + .shortsLockupViewModelHostOutsideMetadataSubhead > span:not(:has-text(/(\d[KMB]|\d\D\d{3})\b/i)):upward(ytd-rich-item-renderer)
+
+!   search
+youtube.com###contents > ytd-video-renderer #meta.ytd-video-renderer #metadata-line > span.inline-metadata-item:first-of-type:not(:has-text(/(\d[KMB]|\d\D\d{3})\b/i)):upward(ytd-video-renderer)
+youtube.com###contents > grid-shelf-view-model div.ytGridShelfViewModelGridShelfItem .shortsLockupViewModelHostMetadataSubhead span:not(:has(> *)):not(:has-text(/(\d[KMB]|\d\D\d{3})\b/i)):upward(.ytGridShelfViewModelGridShelfItem)
+
+!   suggestions
+youtube.com###related :is(yt-lockup-view-model,ytd-compact-video-renderer) > div > a > :not(yt-collection-thumbnail-view-model):upward(2) :is(.yt-content-metadata-view-model__metadata-row,.ytContentMetadataViewModelMetadataRow):nth-of-type(2) > span:is(.yt-content-metadata-view-model__metadata-text,.ytContentMetadataViewModelMetadataText):is(:first-child,:nth-of-type(2)):not(:has-text(/(\d[KMB]|\d\D\d{3})\b/)):upward(yt-lockup-view-model,ytd-compact-video-renderer)
 
 
 
 
+! revert YT endscreen suggestion numbers
+youtube.com##.html5-video-player.ended-mode .ytp-fullscreen-grid
+youtube.com##.html5-video-player.ended-mode.ytp-autonav-endscreen-cancelled-state .html5-endscreen:style( display: block !important; )
+youtube.com##.html5-video-player.ytp-fullscreen.ended-mode.ytp-autonav-endscreen-cancelled-state .html5-endscreen:style( top: 48px !important; )
 
 
 
@@ -21,75 +31,63 @@ www.youtube.com##.ytp-videowall-still[aria-label~="views"]:not(:is([aria-label*=
 
 ! Title: Hide YouTube Shorts
 ! Description: Hide all traces of YouTube shorts videos on YouTube
-! Version: 1.10.0
-! Last modified: 2024-08-31 19:24
+! Version: 2026.4.29
+! Last modified: 2026-04-29 19:49
 ! Expires: 2 weeks (update frequency)
 ! Homepage: https://github.com/gijsdev/ublock-hide-yt-shorts
 ! License: https://github.com/gijsdev/ublock-hide-yt-shorts/blob/master/LICENSE.md
 
-! Remove empty spaces in grid
-www.youtube.com##ytd-rich-grid-row,#contents.ytd-rich-grid-row:style(display: contents !important)
+! Hide all videos with the shorts indicator
+www.youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-video-renderer)
 
-! Hide all videos containing the phrase "#shorts"
-www.youtube.com##ytd-grid-video-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
-www.youtube.com##ytd-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+! Remove generic shorts shelf except on history page
+www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer
 
-! Hide all videos with the shorts indicator on the thumbnail
-www.youtube.com##ytd-grid-video-renderer:has([overlay-style="SHORTS"])
-www.youtube.com##ytd-rich-item-renderer:has([overlay-style="SHORTS"])
-www.youtube.com##ytd-video-renderer:has([overlay-style="SHORTS"])
-www.youtube.com##ytd-item-section-renderer.ytd-section-list-renderer[page-subtype="subscriptions"]:has(ytd-video-renderer:has([overlay-style="SHORTS"]))
+! Remove rich shelf shorts section
+www.youtube.com##ytd-rich-shelf-renderer[is-shorts],ytd-rich-shelf-renderer[is-shorts]:upward(ytd-rich-section-renderer)
+www.youtube.com##ytd-rich-item-renderer[rendered-from-rich-grid] ytm-shorts-lockup-view-model:upward(ytd-rich-item-renderer[rendered-from-rich-grid])
 
 ! Hide shorts button in sidebar
-www.youtube.com##ytd-guide-entry-renderer:has(yt-formatted-string:has-text(/^Shorts$/i))
+www.youtube.com##ytd-guide-entry-renderer:has(.ytd-guide-entry-renderer[title="Shorts"])
 ! Tablet resolution
-www.youtube.com##ytd-mini-guide-entry-renderer:has(.title:has-text(/^Shorts$/i))
+www.youtube.com##ytd-mini-guide-entry-renderer:has(.ytd-mini-guide-entry-renderer[title="Shorts"])
 
-! Hide shorts sections except on history page
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
+! Hide shorts tab on channel pages
+www.youtube.com##yt-tab-shape[tab-title="Shorts"]
 
-! Hide shorts tab on channel pages`
-! Old style
-www.youtube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))
-! New style (2023-10)
-www.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
+! Hide shorts filter/category on top of homepage and search pages
+www.youtube.com##yt-chip-cloud-chip-renderer:has(.ytChipShapeInactive:has-text(/^Shorts$/i))
 
-! Hide short remixes in video descriptions and in suggestions beside the comments
-www.youtube.com##ytd-reel-shelf-renderer:has(#title:has-text(/(^| )Shorts.?Remix.*$/i))
-
-! Hide shorts category on homepage and search pages
-www.youtube.com##yt-chip-cloud-chip-renderer:has(yt-formatted-string:has-text(/^Shorts$/i))
+! Hide shorts sections on search page
+www.youtube.com##ytm-shorts-lockup-view-model-v2:upward(grid-shelf-view-model)
 
 !!! MOBILE !!!
 
-! Hide all videos in home feed containing the phrase "#shorts"
-www.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+! Hide all videos with the shorts indicator
+m.youtube.com##ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-video-with-context-renderer)
 
-! Hide all videos in subscription feed containing the phrase "#shorts"
-m.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+! Remove generic shorts shelf except on history page
+m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer
 
 ! Hide shorts button in the bottom navigation bar
 m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
 
-! Hide all videos with the shorts indicator on the thumbnail
-m.youtube.com##ytm-video-with-context-renderer:has([data-style="SHORTS"])
-
 ! Hide shorts sections except on history page
-m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
-m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
+m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-shorts-lockup-view-model:upward(ytm-rich-section-renderer)
 
 ! Hide shorts tab on channel pages
-! Old style
-m.youtube.com##.single-column-browse-results-tabs>a:has-text(Shorts)
-! New style (2023-10)
-m.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
+m.youtube.com##yt-tab-shape[tab-title="Shorts"]
 
-! Hide short remixes in video descriptions and in suggestions below the player
-m.youtube.com##ytm-reel-shelf-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts.?Remix.*$/i))
+! Hide shorts filter/category on top of homepage and search pages
+www.youtube.com##ytm-chip-cloud-chip-renderer:has([aria-label="Shorts"])
 
-! Hide shorts category on homepage
-m.youtube.com##ytm-chip-cloud-chip-renderer:has(.yt-core-attributed-string:has-text(/^Shorts$/i))
+! Hide shorts sections on search page
+m.youtube.com##ytm-shorts-lockup-view-model:upward(grid-shelf-view-model)
+
+
+
+
+
 
 ! Apr 23, 2025 https://www.youtube.com
 www.youtube.com###guide-content > .ytd-app.style-scope
@@ -113,5 +111,3 @@ sextb.net##.tray-item-description .tray-item-title:style(max-height: 200px !impo
 ! May 10, 2026 https://streamed.pk
 streamed.pk##.svelte-4ozyh1.bg-background.chat-container.relative.p-2.drop-shadow-lg.rounded-lg.border-2.border-border\/40.w-full
 
-spotify.com##.e-10451-button--leading
-spotify.com##.n4Ttl1dgCKAPuFlK

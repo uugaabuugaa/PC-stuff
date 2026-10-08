@@ -1,0 +1,187 @@
+/*@import url("https://raw.githubusercontent.com/uugaabuugaa/PC-stuff/refs/heads/main/Discord/Equicord/equicord-main.css");*/ 
+@import url("https://raw.githubusercontent.com/tom22k/discord-css/main/Themes/AndroidPlayer.css");
+@import url("https://raw.githubusercontent.com/uugaabuugaa/PC-stuff/refs/heads/main/Discord/Equicord/equicord-clearvision.css");
+:root {
+  /* ACCENT COLORS */
+  --main-color: #956fc0; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
+  --hover-color: #553579; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
+  --success-color: #43b581; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
+  --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
+  /* STATUS COLORS */
+  --online-color: #43b581; /* online status color (hex, rgb or hsl) [default: #43b581] */
+  --idle-color: #faa61a; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
+  --dnd-color: #982929; /* dnd status color (hex, rgb or hsl) [default: #982929] */
+  --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
+  --offline-color: #f2c6fd; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
+  /* APP BACKGROUND */
+  --background-shading-percent: 00%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
+  /*--background-image: url(https://wallpapercave.com/wp/wp4779312.jpg);*/ /*black*/
+  /*--background-image: url(https://i.imgur.com/4f49NII.jpeg);*/ /*blkprpl*/
+  /*--background-image: url(https://i.imgur.com/tqlaVLA.jpeg); /*cor*/ /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
+  /*--background-image: url(https://pbs.twimg.com/media/GSCcpk6awAArrL8?format=jpg&name=orig);*/ /*dome*/ /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
+  /*--background-image: url(https://i.imgur.com/WgEPUuw.jpeg);*/ /*ditto*/
+  /*--background-image: url(https://i.imgur.com/1Q3tbmx.jpeg);*/ /*cor2*/
+  --background-position: bottom; /* app background position [default: center] */
+  --background-size: cover; /* app background size (px) [default: cover] */
+  --background-attachment: fixed; /* app background attachment [default: fixed] */
+  --background-filter: saturate(calc(var(--saturation-factor, 1) * 1)); /* app background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: saturate(calc(var(--saturation-factor, 1) * 1))] */
+  /* USER POPOUT BACKGROUND */
+  --user-popout-image: var(--background-image); /* user popout background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+  --user-popout-position: var(--background-position); /* user popout position [default: var(--background-position)] */
+  --user-popout-size: var(--background-size); /* user popout size (px) [default: var(--background-size)] */
+  --user-popout-attachment: var(--background-attachment); /* user popout background attachment [default: var(--background-attachment)] */
+  --user-popout-filter: var(--background-filter); /* user popout background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+  /* USER MODAL BACKGROUND */
+  --user-modal-image: var(--background-image); /* user modal background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+  --user-modal-position: var(--background-position); /* user modal position [default: var(--background-position)] */
+  --user-modal-size: var(--background-size); /* user modal size (px) [default: var(--background-size)] */
+  --user-modal-attachment: var(--background-attachment); /* user modal background attachment [default: var(--background-attachment)] */
+  --user-modal-filter: var(--background-filter); /* user modal background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+  /* HOME ICON */
+  --home-icon: url(https://clearvision.github.io/icons/discord.svg); /* home button icon (link must be HTTPS) [default: url(https://clearvision.github.io/icons/discord.svg)]*/
+  --home-size: cover; /* home button icon size (px) [default:cover] */
+  /* FONTS */
+  --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
+  --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
+  /* CHANNEL COLORS */
+  --channel-normal: var(--interactive-normal); /* channel text color [default: var(--interactive-normal)] */
+  --channel-muted: var(--interactive-muted); /* muted channel text color [default: var(--interactive-muted)] */
+  --channel-hover: var(--interactive-hover); /* hovered channel text color [default: var(--interactive-hover)] */
+  --channel-selected: var(--interactive-active); /* selected channel text color [default: var(--interactive-active)] */
+  --channel-selected-bg: var(--main-color); /* selected channel background [default: var(--main-color)] */
+  --channel-unread: var(--main-color); /* unread channel text color [default: var(--main-color)] */
+  --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
+  /* ACCESSIBILITY */
+  --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
+}
+
+/* THEME SPECIFIC SHADING */
+
+/* ONYX THEME */
+:is(.theme-midnight, .theme-light .theme-midnight) {
+  --background-shading: rgba(0, 0, 0, 0.75); /* app background shading color [default: rgba(0, 0, 0, 0.8)] */
+  --card-shading: rgba(0, 0, 0, 0.5); /* cards background shading color [default: rgba(0, 0, 0, 0.4)] */
+  --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.8)] */
+  --modal-shading: rgba(0, 0, 0, 0.8); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --input-shading: rgba(255, 255, 255, 0.02); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+  --normal-text: #fcdde6; /* text color [default: #dcdcde] */
+  --muted-text: #9f88b4; /* muted text color [default: #86868e] */
+}
+
+
+
+
+
+/*user area fix*/
+section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
+ background-color: #00000000 !important;
+ bottom: -7px !important; 
+ }
+
+.visual-refresh.refresh-fast-follow-avatars .container__37e49 {
+    bottom: -7px;
+}
+
+.visual-refresh {
+    #vc-spotify-player {
+      bottom:0px !important; }
+} 
+
+
+/*make channel tab's bottom margin smaller*/
+ .vc-channeltabs-container {
+         margin-bottom: -5px; }
+
+.vc-channeltabs-container-top {
+    padding-left: 0px;
+    }
+
+.vc-channeltabs-tab {
+    border-radius: 5px;
+    min-width: 0;
+    margin: 0 0px;
+    padding: 3px 0px;
+}
+
+.vc-channeltabs-tab.vc-channeltabs-tab-compact.vc-channeltabs-tab-selected {
+  border-color: #f2c6fd !important;
+}
+
+.vc-channeltabs-tab.vc-channeltabs-tab-compact{
+ border-color: #00000000 !important;
+  
+}
+
+/* Ultra-specific selector for Equicord/Equibop badge */
+/*[data-has-mention="false"].numberBadge__463b7.base__463b7.eyebrow__463b7.baseShapeRound__463b7 {
+    background-color: #FF0000 !important; 
+    box-shadow: 0 0 0 2px white !important; 
+}*/
+.visual-refresh {
+  --brand-500: #593695!important;
+}
+
+
+
+/*spotify stuff*/
+
+.slider__4c059{
+    height: 24px;
+    position: absolute;
+    width: 50%;
+    left: 30px;
+    top: 18px
+}
+
+#vc-spotify-player {
+  --android-blur-amount: 0.9px !important; /* adjust blur */
+  --android-darken-percent: 0.7 !important; /* adjust dark fading */
+  --your-font-here: roboto !important; /* choose a font, Roboto is default android font */
+  font-size: 10px;
+  height: 110px;
+}
+
+/*unhide and remove on from album name*/ 
+#vc-spotify-titles .vc-spotify-ellipoverflow {
+    max-height: 1.0rem !important;
+    padding-top: 4px;
+    padding-left: 10px;
+    &:has(> #vc-spotify-album-title) {
+        display: block !important;
+        font-size: 0px !important;
+        > #vc-spotify-album-title,
+        .vc-spotify-comma {
+            font-size: 12px !important;
+            color: white;
+            filter: brightness(.7);
+        }
+    }
+}
+
+
+
+
+
+
+/* ??? */
+.activityUserPopoutV2_c1d9fd:has([class^=timeBarUserPopoutV2_]) .contentImagesUserPopoutV2_c1d9fd {
+  margin-left: 22px;
+}
+
+
+
+
+
+/*remove the visual refresh title bar (https://github.com/surgedevs/visual-refresh-compact-title-bar)*/
+
+.visual-refresh {
+    --vr-header-snippet-top: 60px;
+    --vr-header-snippet-server-padding: 16px;
+    --vr-header-snippet-space: 220px;
+    --vr-header-snippet-button-padding: 30px;
+}
+
+
+
+
+

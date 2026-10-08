@@ -187,6 +187,34 @@ See the above repository for updates as well as full license text. */
 #sidebar-box #sidebar-header {
   display: none !important;
 }
+#sidebar-box #sidebar-panel-header {
+  display: none !important;
+}
+#sidebar-panel-header {
+  display: none;
+}
+
+/*fix for FF v157+*/
+/*blackening behind sidebery sidebar*/
+@media -moz-pref("browser.nova.enabled") {
+  #sidebar-box {
+    #sidebar-container[hidden] ~ &:not([sidebar-positionend]), :root[fullscreenNavToolboxHidden] &:not([sidebar-positionend]) {
+      --sidebar-box-start-start-radius: 0;
+      border-inline-start: none;
+      background-color: black !important;
+    }
+  }
+}
+/*shift sidebery sidebar to left*/
+@media -moz-pref("browser.nova.enabled") {
+  #sidebar {
+    border-radius: 0px;
+    box-shadow: none;
+    outline: none;
+    left: 0px;
+    position: relative;
+  }
+}
 
 
 

@@ -225,7 +225,7 @@
     }
 }
 
-.slider_a562c8{
+.slider__4c059{
     height: 24px;
     position: absolute;
     width: 55%;
@@ -1302,7 +1302,7 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 
 
 /*make search a button*/
-.search__97492:not(.open__97492) > .searchBar__97492 {
+.search_c322aa:not(.open_c322aa) > .searchBar_c322aa {
     width: 25px;
     background: transparent;
     border-color: transparent;
@@ -1312,19 +1312,19 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
     background: transparent;
 }
 
-.search__97492:not(.open__97492) .iconLayout_fea832 {
+.search_c322aa:not(.open_c322aa) .iconLayout_fea832 {
     cursor: pointer;
 }
 
-.search__97492:not(.open__97492) .iconContainer_fea832 {
+.search_c322aa:not(.open_c322aa) .iconContainer_fea832 {
     transform: scale(1.2);
 }
 
-.search__97492:not(.open__97492) .icon_fea832 {
+.search_c322aa:not(.open_c322aa) .icon_fea832 {
     color: var(--interactive-normal);
 }
 
-.search__97492:not(.open__97492):hover .icon_fea832 {
+.search_c322aa:not(.open_c322aa):hover .icon_fea832 {
     color: var(--interactive-active);
 }
 
@@ -1333,7 +1333,7 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 
 
 /* Ultra-specific selector for Equicord/Equibop badge */
-/*[data-has-mention="false"].numberBadge__2b1f5.base__2b1f5.eyebrow__2b1f5.baseShapeRound__2b1f5 {
+/*[data-has-mention="false"].numberBadge__463b7.base__463b7.eyebrow__463b7.baseShapeRound__463b7 {
     background-color: #FF0000 !important; 
     box-shadow: 0 0 0 2px white !important; 
 }*/

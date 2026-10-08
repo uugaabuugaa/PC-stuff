@@ -185,6 +185,30 @@ See the above repository for updates as well as full license text. */
 }
 
 
+/*fix for FF v157+*/
+/*blackening behind sidebery sidebar*/
+#sidebar-box {
+    #sidebar-container[hidden] ~ &:not([sidebar-positionend]), :root[fullscreenNavToolboxHidden] &:not([sidebar-positionend]) {
+      --sidebar-box-start-start-radius: 0;
+      border-inline-start: none;
+      background-color: black !important;
+    }
+  }
+
+/*shift sidebery sidebar to left*/
+#sidebar {
+    border-radius: 0px;
+    box-shadow: none;
+    outline: none;
+    left: 0px;
+    position: relative;
+  }
+
+/*turn off sidebar panel header on sidebar.revamp set to true*/
+/*sidebar-panel-header {
+  padding-inline: var(--space-large);
+  display: none !important;
+}*/
 
 
 
@@ -259,9 +283,11 @@ min-width: 45px !important;
 }
 
 /*scrollbar*/
+
 #panel-sidebar-select-box {
 margin-right: -8px !important;
 }
+
 
 
 
@@ -638,7 +664,7 @@ findbar::after{
     & #tabbrowser-tabpanels browser[type] {
         /*margin: var(--uc-content-margins) !important;
         border-radius: var(--uc-content-border-radius) !important;*/
-        outline: 15px solid #000000 !important;        
+        outline: 12px solid #000000 !important;        
     }          
 }
 

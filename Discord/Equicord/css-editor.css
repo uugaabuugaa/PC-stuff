@@ -177,7 +177,7 @@ section[aria-label="User area"], div[class*="sidebar_"] > section[aria-label] {
 .visual-refresh {
     --vr-header-snippet-top: 60px;
     --vr-header-snippet-server-padding: 16px;
-    --vr-header-snippet-space: 220px;
+    --vr-header-snippet-space: 22px;
     --vr-header-snippet-button-padding: 30px;
 }
 

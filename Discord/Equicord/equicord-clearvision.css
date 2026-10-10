@@ -1303,7 +1303,7 @@ button.button__67645.redGlow__67645, span.button__67645.redGlow__67645 {
 
 /*make search a button*/
 .search_c322aa:not(.open_c322aa) > .searchBar_c322aa {
-    width: 25px;
+    width: 35px;
     background: transparent;
     border-color: transparent;
 }

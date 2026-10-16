@@ -1,4 +1,4 @@
-!rentry.org
+!!!rentry.org
 ||*.cfd^
 
 
@@ -98,34 +98,34 @@ m.youtube.com##ytm-shorts-lockup-view-model:upward(grid-shelf-view-model)
 !YOUTUBE FONT RESIZER
 
 !font for channel name, view, upload date
-youtube.com##.ytContentMetadataViewModelMediumText .ytContentMetadataViewModelMetadataText:style(font-size: 1.15rem !important;)
+youtube.com##.ytContentMetadataViewModelMediumText .ytContentMetadataViewModelMetadataText:style(font-size: 1.2rem !important;)
 !fix spacing of items
-youtube.com##.ytContentMetadataViewModelMetadataRow:style(display: contents !important;)
+!youtube.com##.ytContentMetadataViewModelMetadataRow:style(display: contents !important;)
 
 !font for video title
-youtube.com##.ytAttributedStringWhiteSpacePreWrap:style(white-space: pre-wrap !important; font-size: 1.2rem !important;)
+!youtube.com##.ytAttributedStringWhiteSpacePreWrap:style(white-space: pre-wrap !important; font-size: 1.2rem !important;)
 
 !no auto dubbed
-youtube.com##.ytBadgeShapeDefault.ytBadgeShapeModern
+!youtube.com##.ytBadgeShapeDefault.ytBadgeShapeModern
 
 !shrink spacing btn video rows
-youtube.com##ytd-rich-item-renderer:style(margin-bottom: 10px !important;)
-youtube.com##ytd-rich-grid-renderer:style(--ytd-rich-grid-row-margin: 10px !important; --ytd-rich-item-row-margin: 10px !important;)
-youtube.com##ytd-rich-grid-row #contents.ytd-rich-grid-row:style(margin-bottom: 10px !important;)
+!youtube.com##ytd-rich-item-renderer:style(margin-bottom: 10px !important;)
+!youtube.com##ytd-rich-grid-renderer:style(--ytd-rich-grid-row-margin: 10px !important; --ytd-rich-item-row-margin: 10px !important;)
+!youtube.com##ytd-rich-grid-row #contents.ytd-rich-grid-row:style(margin-bottom: 10px !important;)
 
 !font for video title in sidebar
-youtube.com##.ytAttributedStringWhiteSpacePreWrap:style(font-size: 1.2rem !important;)
+!youtube.com##.ytAttributedStringWhiteSpacePreWrap:style(font-size: 1.2rem !important;)
 
 !font for channel name, view, upload date in sidebar
-youtube.com##.ytContentMetadataViewModelHost:style(display: block !important; font-size: 1.4rem !important;)
+!youtube.com##.ytContentMetadataViewModelHost:style(display: block !important; font-size: 1.4rem !important;)
 
 
 
 
 
 
-! Apr 23, 2025 https://www.youtube.com
-www.youtube.com###guide-content > .ytd-app.style-scope
+
+
 
 ! Sep 17, 2025 https://soccerfullmatch.com
 ||soccerfullmatch.com/wp-content/uploads/2024/12/18ad.webp$image
